@@ -115,6 +115,81 @@
 @media(max-width:780px){
  .metric:nth-child(1),.metric:nth-child(2),.metric:nth-child(3),.metric:nth-child(4){background:var(--surface)}
  .heading h1:after{width:7px;height:7px}
+}/* 21st + Stitch + Notion product layer */
+:root{--ink:#111216;--hair:#e7e8ec;--soft:#f7f7f5;--blue:#536dfe;--bluewash:#eef1ff}
+[data-theme=dark]{--ink:#f5f5f3;--hair:#292c33;--soft:#15171b;--blue:#91a1ff;--bluewash:#1a1e31}
+body{background:var(--bg)}
+.sidebar{background:var(--surface);padding-top:20px}
+.brand{font-size:23px;padding-bottom:25px}
+.workspace{background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;margin:0 4px 18px;padding:12px 9px 18px}
+.navlabel{margin-top:16px}
+.nav{position:relative;border-radius:8px}
+.nav.active{box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--text) 9%,transparent)}
+.topbar{height:68px;background:color-mix(in srgb,var(--surface) 97%,transparent);backdrop-filter:blur(18px)}
+.crumb{font-size:11px}
+.content{max-width:1460px;padding:44px 52px 110px}
+.heading{margin-bottom:25px}
+.heading h1{font-size:52px}
+.heading p{font-size:13px}
+.hero{gap:12px}
+.heroCard.mainHero{min-height:340px;border-radius:28px;padding:34px}
+.heroTitle{font-size:61px;max-width:680px;letter-spacing:-.055em}
+.heroCopy{font-size:13px;max-width:560px}
+.heroActions .btn{padding:10px 15px}
+.radar{min-height:236px}
+.metrics{border-radius:16px;margin-bottom:18px}
+.metric{padding:21px 20px}
+.metric strong{font-size:32px}
+.panel{border-radius:16px;box-shadow:none}
+.panelhead{padding:16px 18px}
+.table th{padding:12px 15px;background:var(--soft)}
+.table td{padding:14px 15px}
+.toolbar{padding:5px;background:var(--soft);border:1px solid var(--line);border-radius:12px}
+.toolbar .field{border:0;background:transparent}
+.toolbar .btn{background:var(--surface)}
+.cards{gap:12px}
+.campaign,.approval,.setting{border-radius:16px;box-shadow:none;padding:21px}
+.campaign:hover,.approval:hover,.setting:hover{box-shadow:0 12px 32px rgba(0,0,0,.07)}
+.pipelineBoard{gap:8px}
+.stage{border-radius:14px;padding:12px}
+.stageItem{border-radius:9px;padding:10px}
+.campaignHero{gap:10px}
+.campaignFeature{border-radius:24px;padding:28px;min-height:220px}
+.campaignFeature h2{font-size:40px;letter-spacing:-.04em}
+.campaignStats{border-radius:18px}
+.campaignStat{padding:22px}
+.commandbox{border-radius:16px;box-shadow:0 24px 80px rgba(0,0,0,.2)}
+.command input{padding:19px;font-size:15px}
+.cmd{padding:13px;border-radius:9px}
+.modal{border-radius:18px}
+.btn{font-size:11px}
+.btn.primary{box-shadow:0 4px 14px rgba(0,0,0,.09)}
+.btn.primary:hover{box-shadow:0 10px 24px rgba(0,0,0,.14)}
+/* richer workspace surfaces */
+.view.active{animation:kyroWorkspaceIn .42s cubic-bezier(.2,.8,.2,1) both}
+@keyframes kyroWorkspaceIn{from{opacity:.4;transform:translateY(5px)}to{opacity:1;transform:none}}
+.heroCard.radar:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 20%,rgba(83,109,254,.08),transparent 75%);transform:translateX(-100%);animation:kyroSweep 6s ease-in-out infinite;pointer-events:none}
+@keyframes kyroSweep{45%,100%{transform:translateX(100%)}}
+.metric{position:relative;overflow:hidden}
+.metric:after{content:"";position:absolute;left:20px;right:20px;bottom:0;height:2px;background:linear-gradient(90deg,var(--blue),transparent);transform:scaleX(0);transform-origin:left;transition:transform .5s}
+.metric:hover:after{transform:scaleX(1)}
+/* Notion-like database rhythm */
+#view-prospects .panel{overflow:hidden}
+#view-prospects .table th:first-child,#view-prospects .table td:first-child{padding-left:20px}
+#view-prospects .table td{vertical-align:middle}
+#view-activity .panel{max-width:920px}
+#view-settings .settings{max-width:1100px}
+/* responsive polish */
+@media(max-width:780px){
+ .content{padding:30px 16px 70px}
+ .topbar{height:62px}
+ .heroCard.mainHero{min-height:330px;padding:25px}
+ .heroTitle{font-size:43px}
+ .campaignFeature h2{font-size:31px}
+ .toolbar{overflow:auto}
+}
+@media(prefers-reduced-motion:reduce){
+ .view.active,.heroCard.radar:before{animation:none!important}
 }</style>
 </head>
 <body>
