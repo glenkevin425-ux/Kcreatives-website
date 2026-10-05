@@ -55,7 +55,7 @@
     <div class="metric"><small>REPLIES</small><strong id="mReplies">0</strong><span class="good">Conversation signal</span></div>
     <div class="metric"><small>ACTIVE CAMPAIGNS</small><strong id="mCampaigns">0</strong><span>Currently running</span></div>
   </div>
-  <div class="notice">This workspace is fully interactive in your browser. Changes are stored locally first, then synced to the Python API when the deployment exposes it.</div>
+  <div class="notice">This workspace is fully interactive in your browser. Changes are stored locally in this browser, so the workspace remains usable even when the API is unavailable.</div>
   <div class="grid2">
     <div class="panel tablepanel"><div class="panelhead"><h3>Pipeline</h3><span id="pipelineCount">0 prospects</span></div><div id="pipeline"></div></div>
     <div class="panel"><div class="panelhead"><h3>Recent activity</h3><span>Latest events</span></div><div class="activity" id="recentActivity"></div></div>
@@ -207,7 +207,7 @@ function submitModal(e){
     if(editId){const x=state.campaigns.find(v=>v.id===editId);Object.assign(x,data);addActivity('Campaign updated',x.name)}
     else{const x={...data,id:'c'+Date.now()};state.campaigns.unshift(x);addActivity('Campaign created',x.name)}
   }
-  persist();closeModal();render();toast(modalType==='prospect'?'Prospect saved':'Campaign saved');
+  const savedType=modalType; persist();closeModal();render();toast(savedType==='prospect'?'Prospect saved':'Campaign saved');
 }
 function addActivity(kind,message){state.activity.unshift({id:'a'+Date.now()+Math.random(),kind,message,created_at:new Date().toISOString()});state.activity=state.activity.slice(0,80)}
 function editProspect(id){openModal('prospect',id)}
