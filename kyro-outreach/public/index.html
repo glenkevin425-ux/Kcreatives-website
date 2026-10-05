@@ -44,7 +44,78 @@
 .table tbody tr{transition:background .18s,transform .18s}.table tbody tr:hover{transform:translateX(2px)}
 .modalback.show .modal{animation:kyroScale .28s cubic-bezier(.2,.8,.2,1)}.command.show .commandbox{animation:kyroUp .3s cubic-bezier(.2,.8,.2,1)}
 .toast.show{animation:kyroToast .25s cubic-bezier(.2,.8,.2,1)}@keyframes kyroToast{from{opacity:0;transform:translate(-50%,12px)}to{opacity:1;transform:translate(-50%,0)}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}}.kyro-stagger{animation:kyroUp .5s cubic-bezier(.2,.8,.2,1) both}</style>
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}}.kyro-stagger{animation:kyroUp .5s cubic-bezier(.2,.8,.2,1) both}/* Color editorial layer — Pinterest energy, Refero restraint */
+:root{
+ --accent-blue:#4f6fff;--accent-coral:#ff765f;--accent-lilac:#a887ff;--accent-mint:#66c7a3;--accent-yellow:#f4c95d;
+ --wash-blue:#eef1ff;--wash-coral:#fff0eb;--wash-lilac:#f3efff;--wash-mint:#edf8f3;--wash-yellow:#fff8df;
+}
+[data-theme=dark]{
+ --accent-blue:#8ea2ff;--accent-coral:#ff9a87;--accent-lilac:#c0a7ff;--accent-mint:#7ed8b5;--accent-yellow:#f7d87b;
+ --wash-blue:#171c31;--wash-coral:#2d1b19;--wash-lilac:#211a30;--wash-mint:#162820;--wash-yellow:#2d2818;
+}
+.heroCard.mainHero{background:#080808;isolation:isolate}
+.heroCard.mainHero:after{border-color:rgba(142,162,255,.45)!important;box-shadow:0 0 0 35px rgba(255,118,95,.07),0 0 0 70px rgba(168,135,255,.05)!important}
+.heroCard.mainHero:before{
+ background:
+ radial-gradient(circle at 78% 25%,rgba(79,111,255,.34),transparent 21%),
+ radial-gradient(circle at 92% 78%,rgba(255,118,95,.25),transparent 20%),
+ radial-gradient(circle at 55% 100%,rgba(168,135,255,.18),transparent 24%);
+ animation:kyroColorDrift 10s ease-in-out infinite alternate!important;
+}
+@keyframes kyroColorDrift{
+ 0%{transform:translate3d(-2%,0,0) scale(1)}
+ 50%{transform:translate3d(2%,-1%,0) scale(1.04)}
+ 100%{transform:translate3d(-1%,2%,0) scale(1.08)}
+}
+.heroCard.radar{background:linear-gradient(135deg,var(--surface) 0%,var(--wash-blue) 100%);border-color:rgba(79,111,255,.18)}
+.metric:nth-child(1){background:linear-gradient(135deg,var(--surface),var(--wash-blue))}
+.metric:nth-child(2){background:linear-gradient(135deg,var(--surface),var(--wash-mint))}
+.metric:nth-child(3){background:linear-gradient(135deg,var(--surface),var(--wash-coral))}
+.metric:nth-child(4){background:linear-gradient(135deg,var(--surface),var(--wash-yellow))}
+.metric strong{font-weight:650}
+.pill.green{background:var(--wash-mint);border-color:rgba(102,199,163,.35);color:#176b4c}
+.pill.orange{background:var(--wash-yellow);border-color:rgba(244,201,93,.45);color:#805d05}
+.pill.red{background:var(--wash-coral);border-color:rgba(255,118,95,.35);color:#9a392b}
+.pill:not(.green):not(.orange):not(.red){background:var(--wash-lilac);border-color:rgba(168,135,255,.25)}
+.stage:nth-child(1){background:linear-gradient(180deg,var(--wash-blue),var(--surface2))}
+.stage:nth-child(2){background:linear-gradient(180deg,var(--wash-lilac),var(--surface2))}
+.stage:nth-child(3){background:linear-gradient(180deg,var(--wash-mint),var(--surface2))}
+.stage:nth-child(4){background:linear-gradient(180deg,var(--wash-coral),var(--surface2))}
+.stage:nth-child(1) .stageHead span{color:var(--accent-blue)}
+.stage:nth-child(2) .stageHead span{color:var(--accent-lilac)}
+.stage:nth-child(3) .stageHead span{color:#2d946d}
+.stage:nth-child(4) .stageHead span{color:#d95c48}
+.campaign:nth-child(4n+1){--card-accent:var(--accent-blue);--card-wash:var(--wash-blue)}
+.campaign:nth-child(4n+2){--card-accent:var(--accent-coral);--card-wash:var(--wash-coral)}
+.campaign:nth-child(4n+3){--card-accent:var(--accent-lilac);--card-wash:var(--wash-lilac)}
+.campaign:nth-child(4n){--card-accent:var(--accent-mint);--card-wash:var(--wash-mint)}
+.campaign{position:relative;overflow:hidden}
+.campaign:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--card-accent);transform:scaleY(.25);transform-origin:bottom;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.campaign:hover:before{transform:scaleY(1)}
+.campaign:hover{background:linear-gradient(135deg,var(--surface),var(--card-wash))}
+.campaign .progress i{background:var(--card-accent)}
+.campaignHero .campaignFeature{background:
+ radial-gradient(circle at 85% 15%,rgba(79,111,255,.4),transparent 24%),
+ radial-gradient(circle at 70% 95%,rgba(255,118,95,.25),transparent 24%),#080808}
+.campaignStat:nth-child(1){background:var(--wash-blue)}
+.campaignStat:nth-child(2){background:var(--wash-lilac)}
+.campaignStat:nth-child(3){background:var(--wash-mint)}
+.campaignStat:nth-child(4){background:var(--wash-yellow)}
+.signal:nth-child(1) b{color:var(--accent-blue)}
+.signal:nth-child(2) b{color:var(--accent-coral)}
+.signal:nth-child(3) b{color:var(--accent-mint)}
+.signal:nth-child(4) b{color:var(--accent-lilac)}
+.eventdot{background:var(--accent-blue);box-shadow:0 0 0 5px rgba(79,111,255,.10)}
+.event:nth-child(3n) .eventdot{background:var(--accent-coral);box-shadow:0 0 0 5px rgba(255,118,95,.10)}
+.event:nth-child(3n+1) .eventdot{background:var(--accent-mint);box-shadow:0 0 0 5px rgba(102,199,163,.10)}
+.nav.active{position:relative;background:var(--text);color:var(--bg)}
+.nav.active:after{content:"";position:absolute;right:8px;width:5px;height:5px;border-radius:50%;background:var(--accent-blue);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent-blue) 14%,transparent)}
+.heading h1{position:relative}
+.heading h1:after{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent-coral);margin:0 0 9px 8px;animation:kyroFloat 4s ease-in-out infinite}
+@media(max-width:780px){
+ .metric:nth-child(1),.metric:nth-child(2),.metric:nth-child(3),.metric:nth-child(4){background:var(--surface)}
+ .heading h1:after{width:7px;height:7px}
+}</style>
 </head>
 <body>
 <div class="app">
