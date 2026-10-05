@@ -1,12 +1,21 @@
 from __future__ import annotations
 
-import json
 import mimetypes
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
 from urllib.parse import urlparse
 
+from api import health, overview, prospects, campaigns, activity
+
 PUBLIC_DIR = Path(__file__).resolve().parent / "public"
+
+API_HANDLERS = {
+    "health": health.handler,
+    "overview": overview.handler,
+    "prospects": prospects.handler,
+    "campaigns": campaigns.handler,
+    "activity": activity.handler,
+}
 
 class handler(BaseHTTPRequestHandler):
     def _send(self, status: int, body: bytes, content_type: str) -> None:
@@ -19,11 +28,19 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
+    def _dispatch_api(self) -> bool:
+        parts = [p for p in urlparse(self.path).path.split("/") if p]
+        if len(parts) < 2 or parts[0] != "api":
+            return False
+        target = API_HANDLERS.get(parts[1])
+        if target is None:
+            self._send(404, b'{"error":"API route not found"}', "application/json; charset=utf-8")
+            return True
+        target.do_GET(self) if self.command == "GET" else target.do_POST(self) if self.command == "POST" else target.do_PATCH(self) if self.command == "PATCH" else target.do_PUT(self) if self.command == "PUT" else target.do_DELETE(self) if self.command == "DELETE" else self._send(405, b'{"error":"Method not allowed"}', "application/json; charset=utf-8")
+        return True
+
     def _static(self, path: str) -> None:
-        if path == "/":
-            target = PUBLIC_DIR / "index.html"
-        else:
-            target = (PUBLIC_DIR / path.lstrip("/")).resolve()
+        target = PUBLIC_DIR / "index.html" if path == "/" else (PUBLIC_DIR / path.lstrip("/")).resolve()
         if PUBLIC_DIR not in target.parents and target != PUBLIC_DIR / "index.html":
             self._send(404, b"Not found", "text/plain; charset=utf-8")
             return
@@ -33,17 +50,30 @@ class handler(BaseHTTPRequestHandler):
         content_type, _ = mimetypes.guess_type(target.name)
         self._send(200, target.read_bytes(), f"{content_type or 'application/octet-stream'}; charset=utf-8")
 
-    def _api(self):
-        path = urlparse(self.path).path
-        if path == "/api/health":
-            self._send(200, json.dumps({"status":"ok","service":"kyro-outreach","version":"1.0"}).encode(), "application/json; charset=utf-8")
-            return True
-        return False
-
     def do_GET(self):
-        if self._api():
+        if self._dispatch_api():
             return
         self._static(urlparse(self.path).path)
+
+    def do_POST(self):
+        if self._dispatch_api():
+            return
+        self._send(405, b'{"error":"Method not allowed"}', "application/json; charset=utf-8")
+
+    def do_PATCH(self):
+        if self._dispatch_api():
+            return
+        self._send(405, b'{"error":"Method not allowed"}', "application/json; charset=utf-8")
+
+    def do_PUT(self):
+        if self._dispatch_api():
+            return
+        self._send(405, b'{"error":"Method not allowed"}', "application/json; charset=utf-8")
+
+    def do_DELETE(self):
+        if self._dispatch_api():
+            return
+        self._send(405, b'{"error":"Method not allowed"}', "application/json; charset=utf-8")
 
     def do_HEAD(self):
         path = urlparse(self.path).path
