@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#f3f0e8">
+<meta name="theme-color" content="#ffffff" id="themeColor">
 <meta name="robots" content="noindex,nofollow">
 <title>Kyro — Outreach workspace</title>
 <style>
@@ -110,6 +110,128 @@ select.field{appearance:auto}
 @media(max-width:780px){.app{grid-template-columns:1fr}.sidebar{position:fixed;left:-250px;width:235px;transition:.2s;box-shadow:15px 0 40px rgba(0,0,0,.08)}.sidebar.open{left:0}.mobilemenu{display:grid}.topbar{padding:0 16px}.content{padding:26px 17px}.heading{display:block}.heading-actions{margin-top:15px}.approvals,.settings{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.table{min-width:650px}.panel.tablepanel{overflow:auto}.navcta{display:none}}
 @media(max-width:500px){.metrics{grid-template-columns:1fr 1fr}.metric{padding:13px 12px}.metric:first-child{padding-left:12px}.metric strong{font-size:23px}.topbar{height:58px}.heading h1{font-size:28px}.topactions .btn:not(.icon){display:none}}
 </style>
+<style>
+:root{
+  --bg:#ffffff;--surface:#ffffff;--surface2:#f7f7f5;--surface3:#f1f1ee;
+  --line:#e5e5e2;--line2:#cfcfca;--text:#111111;--muted:#73736f;--soft:#f3f3f0;
+  --accent:#151515;--lime:#b7f34a;--green:#23734a;--red:#b33c35;--orange:#9b641d;
+  --shadow:0 10px 35px rgba(0,0,0,.06)
+}
+html[data-theme="dark"]{
+  --bg:#0b0b0b;--surface:#111111;--surface2:#171717;--surface3:#1d1d1d;
+  --line:#292929;--line2:#414141;--text:#f4f4f0;--muted:#999993;--soft:#202020;
+  --accent:#f4f4f0;--lime:#b7f34a;--green:#78d69d;--red:#ff8177;--orange:#e7b56b;
+  --shadow:0 14px 45px rgba(0,0,0,.35)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:14px;letter-spacing:-.01em;transition:background .2s,color .2s}
+button,input,select,textarea{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}
+.app{display:grid;grid-template-columns:248px 1fr;min-height:100vh}
+.sidebar{border-right:1px solid var(--line);padding:25px 16px;position:sticky;top:0;height:100vh;background:var(--surface);z-index:10}
+.brand{display:flex;align-items:center;gap:10px;padding:0 10px 34px;font-size:24px;font-weight:850;letter-spacing:-.07em}
+.mark{width:27px;height:27px;border:2px solid var(--text);border-radius:8px;background:var(--surface);position:relative;box-shadow:3px 3px 0 var(--text)}
+.mark:after{content:"";position:absolute;width:8px;height:8px;border-radius:2px;background:var(--text);right:4px;top:4px}
+.workspace{margin:0 4px 30px;padding:13px;border:1px solid var(--line);border-radius:8px;background:var(--surface2)}
+.workspace small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:5px}
+.workspace strong{font-size:12px;font-weight:700}
+.navlabel{color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.14em;padding:0 10px;margin:22px 0 8px;font-weight:700}
+.nav{display:flex;align-items:center;gap:11px;width:100%;border:0;background:transparent;color:var(--muted);padding:11px 12px;border-radius:7px;text-align:left;font-size:13px;margin:2px 0}
+.nav:hover{background:var(--surface2);color:var(--text)}
+.nav.active{background:var(--text);color:var(--bg);font-weight:700}
+.nav b{width:17px;color:currentColor;font-size:13px;font-weight:600}
+.sidebarbottom{position:absolute;bottom:20px;left:16px;right:16px}
+.user{display:flex;align-items:center;gap:10px;border-top:1px solid var(--line);padding:16px 10px 0}
+.avatar{width:31px;height:31px;border-radius:8px;background:var(--text);color:var(--bg);display:grid;place-items:center;font-weight:800;font-size:10px}
+.user small{display:block;color:var(--muted);font-size:10px;margin-top:3px}
+.mainwrap{min-width:0;background:var(--bg)}
+.topbar{height:72px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 42px;position:sticky;top:0;background:color-mix(in srgb,var(--surface) 94%,transparent);backdrop-filter:blur(12px);z-index:8}
+.crumb{color:var(--muted);font-size:12px}.crumb strong{color:var(--text);font-weight:700}
+.topactions{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--line2);background:var(--surface);color:var(--text);padding:10px 14px;border-radius:7px;font-size:12px;box-shadow:none;transition:.16s ease}
+.btn:hover{background:var(--surface2);border-color:var(--line2);transform:translateY(-1px)}
+.btn.primary{background:var(--text);color:var(--bg);border-color:var(--text);font-weight:750}
+.btn.primary:hover{opacity:.9}
+.btn.danger{color:var(--red)}
+.btn.icon{width:38px;padding:9px;display:grid;place-items:center}
+.theme-toggle{font-size:15px}
+.content{padding:48px 48px 70px;max-width:1500px;margin:0 auto}
+.view{display:none}.view.active{display:block}
+.heading{display:flex;align-items:flex-end;justify-content:space-between;gap:25px;margin-bottom:36px}
+.eyebrow,.pulse-kicker{font-size:10px;text-transform:uppercase;letter-spacing:.15em;color:var(--muted);font-weight:800}
+.heading h1{font-size:42px;letter-spacing:-.065em;line-height:1;margin:9px 0 10px;font-weight:780}
+.heading p{color:var(--muted);font-size:14px;margin:0;line-height:1.5}
+.heading-actions{display:flex;gap:8px;flex-wrap:wrap}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:22px;background:var(--surface)}
+.metric{border-right:1px solid var(--line);padding:22px 23px;background:var(--surface)}
+.metric:first-child{padding-left:23px}.metric:last-child{border-right:0}
+.metric small{color:var(--muted);font-size:10px;letter-spacing:.13em;font-weight:800}
+.metric strong{display:block;font-size:32px;letter-spacing:-.055em;margin:9px 0 3px;font-weight:760}
+.metric span{font-size:12px;color:var(--muted)}.metric .good{color:var(--green)}
+.notice{padding:12px 14px;border:1px solid var(--line);background:var(--surface2);border-radius:8px;color:var(--muted);font-size:11px;margin-bottom:24px}
+.grid2{display:grid;grid-template-columns:1.35fr .8fr;gap:34px}
+.panel{border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow:hidden}
+.panelhead{padding:16px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;background:var(--surface)}
+.panelhead h3{margin:0;font-size:14px;font-weight:750;letter-spacing:-.02em}.panelhead span{color:var(--muted);font-size:10px}
+.table{width:100%;border-collapse:collapse}
+.table th{text-align:left;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.11em;font-weight:800;padding:12px 14px;background:var(--surface2)}
+.table td{padding:14px;border-top:1px solid var(--line);font-size:12px;color:var(--text);vertical-align:middle}
+.table tr:hover td{background:var(--surface2)}
+.person{display:flex;align-items:center;gap:10px}.mini{width:29px;height:29px;border:1px solid var(--line2);border-radius:8px;background:var(--surface2);display:grid;place-items:center;font-size:9px;font-weight:800;color:var(--text)}
+.sub{display:block;color:var(--muted);font-size:10px;margin-top:3px}
+.pill{display:inline-flex;padding:5px 7px;border-radius:999px;background:var(--surface2);color:var(--muted);font-size:9px;white-space:nowrap;border:1px solid var(--line)}
+.pill.green{color:var(--green);background:color-mix(in srgb,var(--green) 9%,var(--surface));border-color:color-mix(in srgb,var(--green) 22%,var(--line))}
+.pill.blue{color:#637f9d;background:color-mix(in srgb,#637f9d 9%,var(--surface));border-color:color-mix(in srgb,#637f9d 20%,var(--line))}
+.pill.orange{color:var(--orange);background:color-mix(in srgb,var(--orange) 9%,var(--surface));border-color:color-mix(in srgb,var(--orange) 20%,var(--line))}
+.pill.red{color:var(--red);background:color-mix(in srgb,var(--red) 9%,var(--surface));border-color:color-mix(in srgb,var(--red) 20%,var(--line))}
+.activity{padding:0 18px}.event{display:flex;gap:11px;padding:16px 0;border-bottom:1px solid var(--line)}.event:last-child{border:0}
+.eventdot{width:7px;height:7px;border-radius:50%;background:var(--text);margin-top:6px;box-shadow:0 0 0 4px color-mix(in srgb,var(--text) 7%,transparent);flex:0 0 auto}
+.event strong{font-size:12px;font-weight:750}.event p{margin:4px 0 0;color:var(--muted);font-size:11px;line-height:1.5}.event time{display:block;color:var(--muted);font-size:9px;margin-top:5px}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.search{flex:1;min-width:220px}
+.field{width:100%;border:1px solid var(--line2);background:var(--surface);color:var(--text);border-radius:7px;padding:11px 12px;outline:0;font-size:12px}
+.field::placeholder{color:var(--muted)}.field:focus{border-color:var(--text);box-shadow:0 0 0 3px color-mix(in srgb,var(--text) 7%,transparent)}
+select.field{appearance:auto}
+.empty{padding:55px 15px;text-align:center;color:var(--muted)}.empty strong{display:block;color:var(--text);margin-bottom:6px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.campaign{padding:20px;border:1px solid var(--line);border-radius:12px;background:var(--surface);transition:.18s ease;position:relative;overflow:hidden}
+.campaign:before{content:"";display:block;position:absolute;left:0;top:0;width:100%;height:3px;background:var(--line2)}
+.campaign:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--line2)}
+.campaigntop{display:flex;justify-content:space-between;gap:10px;padding-top:2px}.campaign h3{margin:0;font-size:16px;font-weight:760;letter-spacing:-.03em}
+.campaign p{color:var(--muted);font-size:12px;line-height:1.55;min-height:55px;margin:14px 0}
+.campaignmeta{display:flex;justify-content:space-between;color:var(--muted);font-size:10px;border-top:1px solid var(--line);padding-top:12px}
+.campaignactions{display:flex;gap:6px;margin-top:14px}.campaignactions .btn{padding:8px 10px;font-size:10px}
+.progress{height:5px;background:var(--surface3);border-radius:99px;overflow:hidden}.progress i{display:block;height:100%;background:var(--text);border-radius:99px}
+.approvals{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.approval{border:1px solid var(--line);border-radius:12px;padding:20px;background:var(--surface)}
+.approvalhead{display:flex;justify-content:space-between;gap:15px}.approval h3{font-size:16px;margin:0;font-weight:760}
+.approval .mail{margin:17px 0;padding:16px;border:1px solid var(--line);border-radius:9px;background:var(--surface2);color:var(--muted);font-size:12px;line-height:1.7}
+.approvalfooter{display:flex;justify-content:space-between;align-items:center}.approvalfooter small{color:var(--muted);font-size:9px}
+.settings{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.setting{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:20px}
+.setting h3{font-size:15px;margin:0 0 6px;font-weight:750}.setting p{color:var(--muted);font-size:11px;line-height:1.6;margin:0 0 18px}
+.rowfield{margin:12px 0}.rowfield label{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:7px;font-weight:800}
+.switch{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-top:1px solid var(--line);font-size:12px}
+.toggle{width:38px;height:21px;border-radius:99px;background:var(--line2);padding:3px;border:0}.toggle i{display:block;width:15px;height:15px;background:var(--surface);border-radius:50%;transition:.18s;box-shadow:0 1px 2px rgba(0,0,0,.15)}
+.toggle.on{background:var(--text)}.toggle.on i{transform:translateX(17px);background:var(--bg)}
+.modalback{position:fixed;inset:0;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:18px;z-index:50}
+.modalback.show{display:flex}.modal{width:min(540px,100%);background:var(--surface);border:1px solid var(--line2);border-radius:12px;box-shadow:0 25px 80px rgba(0,0,0,.18);overflow:hidden}
+.modalhead{padding:18px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.modalhead h2{margin:0;font-size:17px}
+.modalbody{padding:20px}.modalfoot{padding:14px 20px;border-top:1px solid var(--line);display:flex;justify-content:flex-end;gap:8px}
+.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--text);color:var(--bg);padding:11px 14px;border-radius:8px;font-size:11px;font-weight:750;z-index:80;transition:.2s}.toast.show{opacity:1;transform:translate(-50%,0)}
+.mobilemenu{display:none}.muted{color:var(--muted)}
+.overview-pulse{display:grid;grid-template-columns:1.7fr .7fr;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:24px;background:var(--surface);min-height:285px}
+.pulse-main{padding:25px 26px 17px;border-right:1px solid var(--line);position:relative}
+.pulse-top{display:flex;justify-content:space-between;gap:20px}.pulse-top h2{font-size:26px;letter-spacing:-.05em;margin:7px 0 6px}.pulse-top p{font-size:12px;color:var(--muted);margin:0;max-width:540px;line-height:1.5}
+.live-dot{font-size:9px;letter-spacing:.12em;font-weight:800;height:max-content;padding:6px 8px;border:1px solid color-mix(in srgb,var(--green) 28%,var(--line));color:var(--green);border-radius:999px}
+.pulse-chart{height:175px;margin-top:13px;color:var(--text)}.pulse-chart svg{width:100%;height:150px;display:block}
+.chart-fill{fill:url(#pulseFill)}.chart-line{fill:none;stroke:currentColor;stroke-width:3;vector-effect:non-scaling-stroke}.chart-point{fill:var(--lime);stroke:var(--text);stroke-width:3;vector-effect:non-scaling-stroke}
+.chart-labels{display:flex;justify-content:space-between;color:var(--muted);font-size:9px;padding:0 2px}
+.pulse-side{display:flex;flex-direction:column;padding:12px 0}.signal{display:flex;gap:12px;align-items:center;padding:19px 21px;border-bottom:1px solid var(--line)}.signal-icon{width:34px;height:34px;border-radius:9px;background:var(--surface2);display:grid;place-items:center;font-size:16px}.signal strong{display:block;font-size:14px}.signal small{display:block;color:var(--muted);font-size:10px;margin-top:2px}.pulse-link{margin-top:auto;border:0;background:transparent;color:var(--text);font-size:11px;font-weight:750;text-align:left;padding:18px 21px}.pulse-link span{float:right;font-size:15px}
+html[data-theme="dark"] .mark{box-shadow:3px 3px 0 var(--lime)}html[data-theme="dark"] .nav.active{color:#0b0b0b;background:var(--lime)}html[data-theme="dark"] .btn.primary{color:#0b0b0b;background:var(--lime);border-color:var(--lime)}html[data-theme="dark"] .progress i{background:var(--lime)}
+@media(max-width:1050px){.metrics{grid-template-columns:1fr 1fr}.metric{border-bottom:1px solid var(--line)}.grid2{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}.overview-pulse{grid-template-columns:1fr}.pulse-main{border-right:0;border-bottom:1px solid var(--line)}}
+@media(max-width:780px){.app{grid-template-columns:1fr}.sidebar{position:fixed;left:-275px;width:260px;transition:.2s;box-shadow:15px 0 40px rgba(0,0,0,.16)}.sidebar.open{left:0}.mobilemenu{display:grid}.topbar{padding:0 16px}.content{padding:30px 17px 50px}.heading{display:block}.heading-actions{margin-top:17px}.heading h1{font-size:36px}.approvals,.settings{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.table{min-width:720px}.panel.tablepanel{overflow:auto}.navcta{display:none}.topactions .pill{display:none}.overview-pulse{margin-left:0;margin-right:0}.pulse-top h2{font-size:23px}}
+@media(max-width:500px){.metrics{grid-template-columns:1fr 1fr}.metric{padding:15px 13px}.metric:first-child{padding-left:13px}.metric strong{font-size:26px}.topbar{height:62px}.heading h1{font-size:32px}.topactions .btn:not(.icon){display:none}.pulse-main{padding:21px 18px}.pulse-side{display:grid;grid-template-columns:1fr 1fr}.signal{padding:14px 15px}.pulse-link{grid-column:1/-1;padding:15px}.pulse-chart{height:155px}}
+</style>
 </head>
 <body>
 <div class="app">
@@ -130,19 +252,39 @@ select.field{appearance:auto}
 <div class="mainwrap">
 <header class="topbar">
   <div style="display:flex;align-items:center;gap:12px"><button class="btn icon mobilemenu" onclick="toggleSidebar()">☰</button><div class="crumb">Kyro / <strong id="crumb">Overview</strong></div></div>
-  <div class="topactions"><span class="pill green" id="connection">● Local workspace</span><button class="btn" onclick="openModal('prospect')">+ Prospect</button><button class="btn primary" onclick="openModal('campaign')">New campaign</button></div>
+  <div class="topactions"><span class="pill green" id="connection">● Local workspace</span><button class="btn icon theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span id="themeIcon">☾</span></button><button class="btn" onclick="openModal('prospect')">+ Prospect</button><button class="btn primary" onclick="openModal('campaign')">New campaign</button></div>
 </header>
 
 <main class="content">
 <section class="view active" id="view-overview">
-  <div class="heading"><div><div class="eyebrow">Command center</div><h1>Good morning, Glen.</h1><p>A clear view of your outreach and what needs attention.</p></div><div class="heading-actions"><button class="btn" onclick="refreshAll()">↻ Refresh</button></div></div>
+  <div class="heading"><div><div class="eyebrow">Kyro overview</div><h1>Your outreach, in motion.</h1><p>See what is moving, what is waiting and what deserves your attention.</p></div><div class="heading-actions"><button class="btn" onclick="refreshAll()">↻ Refresh</button></div></div>
   <div class="metrics">
     <div class="metric"><small>PROSPECTS</small><strong id="mProspects">0</strong><span id="mProspectsNote">Your pipeline</span></div>
     <div class="metric"><small>APPROVED</small><strong id="mApproved">0</strong><span class="good">Ready to move</span></div>
     <div class="metric"><small>REPLIES</small><strong id="mReplies">0</strong><span class="good">Conversation signal</span></div>
     <div class="metric"><small>ACTIVE CAMPAIGNS</small><strong id="mCampaigns">0</strong><span>Currently running</span></div>
   </div>
-  <div class="notice">This workspace is fully interactive in your browser. Changes are stored locally in this browser, so the workspace remains usable even when the API is unavailable.</div>
+  <div class="overview-pulse">
+    <div class="pulse-main">
+      <div class="pulse-top"><div><span class="pulse-kicker">OUTREACH PULSE</span><h2>Momentum is building.</h2><p>Your workspace at a glance — where conversations are moving and where attention is needed.</p></div><span class="live-dot">LIVE</span></div>
+      <div class="pulse-chart" aria-label="Outreach activity trend">
+        <svg viewBox="0 0 760 170" preserveAspectRatio="none" role="img">
+          <defs><linearGradient id="pulseFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".18"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>
+          <path class="chart-fill" d="M0 138 C70 132 80 112 145 120 S230 96 285 108 S370 70 430 86 S500 55 560 72 S645 34 760 46 L760 170 L0 170 Z"/>
+          <path class="chart-line" d="M0 138 C70 132 80 112 145 120 S230 96 285 108 S370 70 430 86 S500 55 560 72 S645 34 760 46"/>
+          <circle cx="760" cy="46" r="5" class="chart-point"/>
+        </svg>
+        <div class="chart-labels"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Today</span></div>
+      </div>
+    </div>
+    <div class="pulse-side">
+      <div class="signal"><span class="signal-icon">↗</span><div><strong>2 ready</strong><small>approved prospects</small></div></div>
+      <div class="signal"><span class="signal-icon">◷</span><div><strong>1 waiting</strong><small>needs your review</small></div></div>
+      <div class="signal"><span class="signal-icon">↳</span><div><strong>1 reply</strong><small>conversation opened</small></div></div>
+      <button class="pulse-link" onclick="showView('activity')">View activity <span>→</span></button>
+    </div>
+  </div>
+  <div class="notice">Changes are stored locally in this browser. The workspace stays usable when the API is unavailable.</div>
   <div class="grid2">
     <div class="panel tablepanel"><div class="panelhead"><h3>Pipeline</h3><span id="pipelineCount">0 prospects</span></div><div id="pipeline"></div></div>
     <div class="panel"><div class="panelhead"><h3>Recent activity</h3><span>Latest events</span></div><div class="activity" id="recentActivity"></div></div>
@@ -214,6 +356,19 @@ const seed={
     {id:'a3',kind:'Campaign',message:'Launch Q4 campaign is active',created_at:new Date(Date.now()-7200000).toISOString()}
   ]
 };
+
+function applyTheme(theme){
+  const t=theme==='dark'?'dark':'light';
+  document.documentElement.dataset.theme=t;
+  localStorage.setItem('kyro_theme',t);
+  const icon=document.getElementById('themeIcon');
+  if(icon) icon.textContent=t==='dark'?'☀':'☾';
+  const meta=document.getElementById('themeColor');
+  if(meta) meta.setAttribute('content',t==='dark'?'#0b0b0b':'#ffffff');
+}
+function toggleTheme(){applyTheme(document.documentElement.dataset.theme==='dark'?'light':'dark')}
+applyTheme(localStorage.getItem('kyro_theme')||'light');
+
 let state=load();
 let modalType=null, editId=null;
 
@@ -303,7 +458,7 @@ function approve(id){const x=state.prospects.find(v=>v.id===id);if(!x)return;x.s
 function cycleCampaign(id){const x=state.campaigns.find(v=>v.id===id);if(!x)return;x.status=x.status==='Active'?'Paused':'Active';addActivity('Campaign '+x.status.toLowerCase(),x.name);persist();render();toast(x.name+' is '+x.status.toLowerCase())}
 function removeCampaign(id){const x=state.campaigns.find(v=>v.id===id);if(!x)return;if(!confirm('Delete '+x.name+'?'))return;state.campaigns=state.campaigns.filter(v=>v.id!==id);state.prospects.forEach(p=>{if(p.campaign===x.name)p.campaign='Unassigned'});addActivity('Campaign removed',x.name);persist();render();toast('Campaign deleted')}
 function toggleSetting(el){el.classList.toggle('on')}
-function saveSettings(){localStorage.setItem('kyro_workspace_name',document.getElementById('workspaceName').value);toast('Workspace settings saved')}
+function saveSettings(){const n=document.getElementById('workspaceName').value;localStorage.setItem('kyro_workspace_name',n);const w=document.querySelector('.workspace strong');if(w)w.textContent=n;toast('Workspace settings saved')}
 function resetDemo(){if(!confirm('Reset this browser to the original Kyro demo data?'))return;state=structuredClone(seed);persist();render();toast('Demo workspace reset')}
 async function checkHealth(){try{const r=await fetch('/api/health',{cache:'no-store'});if(r.ok){document.getElementById('connection').textContent='● API connected';document.getElementById('apiHealth').textContent='Healthy';return}}catch(e){}document.getElementById('connection').textContent='● Local workspace';document.getElementById('apiHealth').textContent='Local fallback'}
 function refreshAll(){render();toast('Workspace refreshed')}
