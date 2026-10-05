@@ -63,6 +63,143 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
  .content{padding-left:12px;padding-right:12px}.heading h1{font-size:34px}.hero h2{font-size:34px}.hero{min-height:245px;padding:19px}.hero p{font-size:11px}.focus strong.big{font-size:55px}.pipelineBoard{grid-template-columns:1fr}.toolbar{flex-wrap:wrap}.toolbar .search{flex-basis:100%}.topbar{padding:0 10px}.crumb{font-size:10px}
 }
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+
+/* Kyro premium minimal system — Refero editorial restraint + Pinterest composition */
+:root{
+  --bg:#ffffff;--surface:#ffffff;--soft:#f7f7f6;--soft2:#eeeeec;
+  --line:#dededb;--line2:#c9c9c4;--text:#0b0b0b;--muted:#6f6f6b;
+  --accent:#6f7db7;--accentSoft:#f0f2fa;--good:var(--accent);--warn:var(--accent);
+  --radius:8px;
+}
+[data-theme=dark]{
+  --bg:#0a0a0a;--surface:#101010;--soft:#161616;--soft2:#1d1d1d;
+  --line:#2b2b2b;--line2:#414141;--text:#f7f7f4;--muted:#a0a09a;
+  --accent:#aab5e6;--accentSoft:#20243a;--good:var(--accent);--warn:var(--accent);
+}
+html,body{font-size:16px;letter-spacing:-.018em}
+body{overflow-x:hidden}
+.content{max-width:1480px;padding:46px 48px 88px}
+.topbar{height:68px;padding:0 38px}
+.brand{font-size:24px;padding-bottom:30px}
+.workspace{padding:13px 13px;margin-bottom:26px}
+.workspace small,.navlabel{font-size:10px}
+.workspace strong{font-size:14px}
+.nav{font-size:14px;padding:10px 11px}
+.nav b{font-size:11px}
+.badge{font-size:10px}
+.heading{margin-bottom:30px}
+.eyebrow{font-size:11px}
+.heading h1{font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:54px;font-weight:600;letter-spacing:-.055em;line-height:.98;margin:10px 0 10px}
+.heading p{font-size:15px}
+.btn{border-radius:6px;padding:10px 14px;font-size:13px;box-shadow:none}
+.btn.icon{width:38px;height:38px}
+.overviewGrid{gap:16px}
+.hero{min-height:330px;border-radius:10px;padding:34px}
+.hero:after{display:none}
+.hero h2{font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:58px;font-weight:500;letter-spacing:-.06em;line-height:.98;max-width:720px}
+.hero p{font-size:15px;line-height:1.55}
+.heroActions{gap:9px}
+.focus{border-radius:10px;padding:24px}
+.focus strong.big{font-size:76px}
+.focusLabel{font-size:12px}
+.focusRow{padding:12px 0;font-size:13px}
+.metrics{margin-top:16px;border-radius:8px}
+.metric{padding:20px 21px}
+.metric small{font-size:10px}
+.metric strong{font-size:34px}
+.metric span{font-size:12px}
+.twoCol{gap:16px;margin-top:16px}
+.panel{border-radius:9px}
+.panelhead{padding:16px 18px}
+.panelhead h3{font-size:15px}
+.panelhead span{font-size:11px}
+.chart{padding:15px 18px 8px}
+.chart svg{height:155px}
+.chartStats{padding:5px 18px 18px}
+.chartStats strong{font-size:20px}
+.chartStats span{font-size:10px}
+.activity{padding:0 18px}
+.event{gap:11px;padding:14px 0}
+.event strong{font-size:13px}
+.event p{font-size:12px}
+.event time{font-size:10px}
+.eventdot{width:6px;height:6px}
+.toolbar{gap:9px;margin-bottom:14px}
+.field{padding:11px 12px;border-radius:6px;font-size:13px}
+.database{border-radius:9px}
+.table th{padding:12px 14px;font-size:10px}
+.table td{padding:14px;font-size:13px}
+.mini{width:31px;height:31px;border-radius:6px;font-size:10px}
+.sub{font-size:10px}
+.pill{padding:4px 8px;border-radius:5px;font-size:10px}
+.campaignHero{gap:14px;margin-bottom:16px}
+.campaignFeature{border-radius:10px;padding:28px;min-height:220px}
+.campaignFeature h2{font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:43px;font-weight:500}
+.campaignFeature p{font-size:13px}
+.campaignStats{border-radius:10px}
+.campaignStat{padding:21px}
+.campaignStat strong{font-size:32px}
+.campaignStat span{font-size:10px}
+.pipelineBoard{gap:10px;margin-bottom:16px}
+.stage{border-radius:8px;padding:14px;min-height:145px}
+.stageHead strong{font-size:12px}
+.stageHead span{font-size:10px}
+.stageItem{border-radius:6px;padding:10px;margin-top:7px}
+.stageItem strong{font-size:12px}
+.stageItem small{font-size:10px}
+.cards{gap:13px}
+.campaign,.approval,.setting{border-radius:9px;padding:21px}
+.campaign h3,.approval h3,.setting h3{font-size:16px}
+.campaign p{font-size:13px;min-height:50px}
+.campaignmeta{font-size:10px}
+.progress{height:3px}
+.campaignactions .btn{padding:8px 10px;font-size:11px}
+.mail{font-size:13px;border-radius:6px}
+.setting p{font-size:12px}
+.rowfield label{font-size:10px}
+.switch{font-size:12px}
+.empty{padding:48px;font-size:13px}
+.modal{border-radius:10px}
+.modalhead,.modalfoot{padding:16px 18px}
+.modalhead h2{font-size:17px}
+.modalbody{padding:18px}
+.drawer{width:min(480px,100%);padding:24px}
+.drawer h2{font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:38px;font-weight:500}
+.detailLabel{font-size:10px}
+.detailValue{font-size:13px}
+.detailBox{border-radius:6px;font-size:12px}
+.commandbox{border-radius:9px}
+.command input{font-size:17px;padding:17px}
+.cmd{padding:12px;font-size:13px}
+.toast{font-size:11px;border-radius:6px}
+
+/* One accent only: semantic states, focus, active signals */
+.live,.pill.accent,.pill.good,.pill.warn{color:var(--accent)}
+.live:before,.eventdot{background:var(--accent)}
+.pill.accent{background:var(--accentSoft);border-color:var(--accent)}
+.badge,.btn.accent,.progress i,.toggle.on{background:var(--accent)}
+.btn.accent{border-color:var(--accent)}
+.field:focus{border-color:var(--accent)}
+button:hover{transition-duration:.2s}
+.btn:hover{transform:translateY(-2px)}
+.nav{transition:background .2s,color .2s,transform .2s}
+.nav:hover{transform:translateX(2px)}
+.table tbody tr{transition:background .18s,transform .18s}
+.table tbody tr:hover{transform:translateX(2px)}
+.campaign,.approval,.setting,.stage,.panel,.database,.focus{transition:border-color .2s,transform .22s}
+.campaign:hover,.approval:hover,.setting:hover,.stage:hover,.panel:hover{transform:translateY(-2px);border-color:var(--accent)}
+.metric{position:relative;transition:background .2s}
+.metric:after{content:"";position:absolute;left:0;top:0;width:0;height:2px;background:var(--accent);transition:width .25s}
+.metric:hover:after{width:100%}
+
+/* Premium motion: short, directional, never ornamental */
+.view.active{animation:kyroEnter .34s cubic-bezier(.22,.8,.24,1) both}
+@keyframes kyroEnter{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.hero h2{animation:kyroText .55s .04s cubic-bezier(.22,.8,.24,1) both}
+@keyframes kyroText{from{opacity:0;transform:translateY(12px);letter-spacing:-.045em}to{opacity:1;transform:none;letter-spacing:-.06em}}
+.metric,.campaign,.approval,.stage,.event{animation:kyroItem .42s cubic-bezier(.22,.8,.24,1) both}
+@keyframes kyroItem{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+
 </style>
 </head>
 <body>
@@ -82,7 +219,7 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 </aside>
 <main class="main">
 <header class="topbar">
- <div style="display:flex;align-items:center;gap:9px"><button class="btn icon mobilemenu" onclick="toggleSidebar()">☰</button><span class="crumb">Workspace / <strong id="crumb">Overview</strong></span></div>
+ <div style="display:flex;align-items:center;gap:9px"><button class="btn icon mobilemenu" aria-label="Open menu" onclick="toggleSidebar()">≡</button><span class="crumb">Workspace / <strong id="crumb">Overview</strong></span></div>
  <div class="topactions"><span class="connection" id="connection">● Checking</span><button class="btn" onclick="openCommand()">⌘ K</button><button class="btn icon" id="themeToggle" onclick="toggleTheme()">☾</button><button class="btn primary" onclick="openModal('prospect')">New prospect</button></div>
 </header>
 <div class="content">
@@ -164,7 +301,7 @@ function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&l
 function initials(s){return String(s||'').split(/\s+/).map(x=>x[0]).slice(0,2).join('').toUpperCase()}
 function timeAgo(v){const d=Date.now()-new Date(v).getTime();if(d<60000)return'just now';if(d<3600000)return Math.floor(d/60000)+'m ago';if(d<86400000)return Math.floor(d/3600000)+'h ago';return Math.floor(d/86400000)+'d ago'}
 function pill(s){let c=['Approved','Interested','Replied'].includes(s)?'accent':s==='Draft'?'':s==='Not Interested'||s==='Do Not Contact'?'warn':'';return'<span class="pill '+c+'">'+esc(s)+'</span>'}
-function applyTheme(t){t=t==='dark'?'dark':'light';document.documentElement.dataset.theme=t;localStorage.setItem('kyro_theme',t);document.getElementById('themeToggle').textContent=t==='dark'?'☀':'☾';document.getElementById('themeColor').content=t==='dark'?'#0d0d0d':'#fff'}
+function applyTheme(t){t=t==='dark'?'dark':'light';document.documentElement.dataset.theme=t;localStorage.setItem('kyro_theme',t);document.getElementById('themeToggle').textContent=t==='dark'?'Light':'Dark';document.getElementById('themeColor').content=t==='dark'?'#0d0d0d':'#fff'}
 function toggleTheme(){applyTheme(document.documentElement.dataset.theme==='dark'?'light':'dark')}
 applyTheme(localStorage.getItem('kyro_theme')||'light');
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(window.__toast);window.__toast=setTimeout(()=>t.classList.remove('show'),2200)}
