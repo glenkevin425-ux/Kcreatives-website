@@ -3,467 +3,121 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#ffffff" id="themeColor">
-<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#fff" id="themeColor">
 <title>Kyro — Outreach workspace</title>
 <style>
-:root{--bg:#fff;--surface:#fff;--surface2:#fafafa;--line:#e7e7e7;--line2:#d7d7d7;--text:#171717;--muted:#777;--soft:#f4f4f4;--accent:#171717;--green:#28704d;--red:#a23b35;--orange:#98611d}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:#fff;color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:13px}
-button,input,select,textarea{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}
-.app{display:grid;grid-template-columns:220px 1fr;min-height:100vh}
-.sidebar{border-right:1px solid var(--line);padding:24px 14px;position:sticky;top:0;height:100vh;background:#fff;z-index:10}
-.brand{display:flex;align-items:center;gap:9px;padding:0 9px 30px;font-size:21px;font-weight:800;letter-spacing:-.06em}
-.mark{width:25px;height:25px;border:2px solid #171717;border-radius:50%;background:#fff;position:relative;box-shadow:none}
-.mark:after{content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:#171717;right:4px;top:4px}
-.workspace{margin:0 4px 28px;padding:10px 11px;border:1px solid var(--line);border-radius:4px;background:#fff}
-.workspace small{display:block;color:#999;font-size:9px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}
-.workspace strong{font-size:11px;font-weight:650}
-.navlabel{color:#aaa;font-size:9px;text-transform:uppercase;letter-spacing:.14em;padding:0 10px;margin:20px 0 7px}
-.nav{display:flex;align-items:center;gap:10px;width:100%;border:0;background:#fff;color:#777;padding:9px 10px;border-radius:4px;text-align:left;font-size:12px;margin:1px 0}
-.nav:hover{background:#f5f5f5;color:#171717}
-.nav.active{background:#f1f1f1;color:#171717;font-weight:650;box-shadow:none}
-.nav b{width:16px;color:#999;font-size:12px;font-weight:500}
-.sidebarbottom{position:absolute;bottom:20px;left:14px;right:14px}
-.user{display:flex;align-items:center;gap:9px;border-top:1px solid var(--line);padding:14px 10px 0}
-.avatar{width:28px;height:28px;border-radius:50%;background:#171717;color:#fff;display:grid;place-items:center;font-weight:700;font-size:9px}
-.user small{display:block;color:#999;font-size:9px;margin-top:2px}
-.mainwrap{min-width:0}
-.topbar{height:62px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 34px;position:sticky;top:0;background:#fff;z-index:8}
-.crumb{color:#999;font-size:11px}.crumb strong{color:#222;font-weight:600}
-.topactions{display:flex;gap:7px;align-items:center}
-.btn{border:1px solid var(--line2);background:#fff;color:#222;padding:8px 12px;border-radius:4px;font-size:11px;box-shadow:none}
-.btn:hover{background:#f7f7f7;border-color:#bbb;transform:none}
-.btn.primary{background:#171717;color:#fff;border-color:#171717;font-weight:650}
-.btn.primary:hover{background:#000;border-color:#000}
-.btn.danger{color:var(--red)}
-.btn.icon{width:34px;padding:8px;display:grid;place-items:center}
-.content{padding:42px 44px;max-width:1360px;margin:0 auto}
-.view{display:none}.view.active{display:block}
-.heading{display:flex;align-items:flex-end;justify-content:space-between;gap:25px;margin-bottom:32px}
-.eyebrow{font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:#999;font-weight:650}
-.heading h1{font-size:31px;letter-spacing:-.055em;line-height:1.05;margin:7px 0 8px;font-weight:700}
-.heading p{color:#777;font-size:12px;margin:0}
-.heading-actions{display:flex;gap:7px;flex-wrap:wrap}
-.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:30px}
-.metric{border-right:1px solid var(--line);padding:18px 20px;background:#fff}
-.metric:first-child{padding-left:0}.metric:last-child{border-right:0}
-.metric small{color:#999;font-size:8px;letter-spacing:.13em;font-weight:700}
-.metric strong{display:block;font-size:27px;letter-spacing:-.05em;margin:7px 0 1px;font-weight:650}
-.metric span{font-size:10px;color:#888}.metric .good{color:var(--green)}
-.notice{padding:11px 13px;border:1px solid var(--line);background:#fafafa;border-radius:3px;color:#666;font-size:10px;margin-bottom:22px}
-.grid2{display:grid;grid-template-columns:1.45fr .75fr;gap:34px}
-.panel{border:0;border-top:1px solid var(--line);border-radius:0;background:#fff;overflow:hidden}
-.panelhead{padding:13px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
-.panelhead h3{margin:0;font-size:12px;font-weight:650;letter-spacing:-.01em}.panelhead span{color:#999;font-size:9px}
-.table{width:100%;border-collapse:collapse}
-.table th{text-align:left;color:#aaa;font-size:8px;text-transform:uppercase;letter-spacing:.1em;font-weight:650;padding:10px 10px 9px 0;background:#fff}
-.table td{padding:12px 10px 12px 0;border-top:1px solid #f0f0f0;font-size:10px;color:#4c4c4c;vertical-align:middle}
-.table tr:hover td{background:#fcfcfc}
-.person{display:flex;align-items:center;gap:8px}
-.mini{width:25px;height:25px;border:1px solid #ddd;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:8px;font-weight:700;color:#555}
-.sub{display:block;color:#999;font-size:8px;margin-top:2px}
-.pill{display:inline-flex;padding:4px 6px;border-radius:3px;background:#f5f5f5;color:#777;font-size:8px;white-space:nowrap;border:1px solid #e8e8e8}
-.pill.green{color:#286247;background:#edf6f0;border-color:#d7e8dd}
-.pill.blue{color:#536b85;background:#f0f4f8;border-color:#dce5ee}
-.pill.orange{color:#8a5d26;background:#faf3e7;border-color:#eee0c9}
-.pill.red{color:#95463f;background:#fbefee;border-color:#edd8d5}
-.activity{padding:0}
-.event{display:flex;gap:10px;padding:13px 0;border-bottom:1px solid #f0f0f0}
-.event:last-child{border:0}
-.eventdot{width:5px;height:5px;border-radius:50%;background:#171717;margin-top:5px;box-shadow:none;flex:0 0 auto}
-.event strong{font-size:10px;font-weight:650}.event p{margin:3px 0 0;color:#777;font-size:9px;line-height:1.45}.event time{display:block;color:#aaa;font-size:8px;margin-top:4px}
-.toolbar{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px}
-.search{flex:1;min-width:220px}
-.field{width:100%;border:1px solid var(--line2);background:#fff;color:#222;border-radius:4px;padding:9px 10px;outline:0;font-size:11px}
-.field:focus{border-color:#777;box-shadow:none}
-select.field{appearance:auto}
-.empty{padding:45px 15px;text-align:center;color:#999}.empty strong{display:block;color:#555;margin-bottom:5px}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.campaign{padding:0 0 17px;border:0;border-top:1px solid var(--line);border-radius:0;background:#fff}
-.campaigntop{display:flex;justify-content:space-between;gap:10px;padding-top:15px}
-.campaign h3{margin:0;font-size:13px;font-weight:650}.campaign p{color:#777;font-size:10px;line-height:1.55;min-height:34px}
-.campaignmeta{display:flex;justify-content:space-between;color:#999;font-size:8px;border-top:1px solid #f0f0f0;padding-top:10px}
-.campaignactions{display:flex;gap:5px;margin-top:12px}.campaignactions .btn{padding:7px 9px;font-size:9px}
-.progress{height:3px;background:#eee;border-radius:0;overflow:hidden}.progress i{display:block;height:100%;background:#171717;border-radius:0}
-.approvals{display:grid;grid-template-columns:1fr 1fr;gap:25px}
-.approval{border:0;border-top:1px solid var(--line);border-radius:0;padding:16px 0;background:#fff}
-.approvalhead{display:flex;justify-content:space-between;gap:15px}.approval h3{font-size:13px;margin:0;font-weight:650}
-.approval .mail{margin:15px 0;padding:14px;border:1px solid var(--line);border-radius:3px;background:#fafafa;color:#555;font-size:10px;line-height:1.65}
-.approvalfooter{display:flex;justify-content:space-between;align-items:center}.approvalfooter small{color:#999;font-size:8px}
-.settings{display:grid;grid-template-columns:1fr 1fr;gap:32px 45px}
-.setting{border:0;border-top:1px solid var(--line);border-radius:0;background:#fff;padding:16px 0}
-.setting h3{font-size:13px;margin:0 0 5px;font-weight:650}.setting p{color:#777;font-size:10px;line-height:1.5;margin:0 0 16px}
-.rowfield{margin:11px 0}.rowfield label{display:block;color:#999;font-size:8px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
-.switch{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-top:1px solid #f0f0f0;font-size:10px}
-.toggle{width:34px;height:19px;border-radius:10px;background:#ddd;padding:2px;border:0}.toggle i{display:block;width:15px;height:15px;background:#fff;border-radius:50%;transition:.18s;box-shadow:0 1px 2px rgba(0,0,0,.15)}
-.toggle.on{background:#171717}.toggle.on i{transform:translateX(15px);background:#fff}
-.modalback{position:fixed;inset:0;background:rgba(255,255,255,.88);display:none;align-items:center;justify-content:center;padding:18px;z-index:50}
-.modalback.show{display:flex}
-.modal{width:min(500px,100%);background:#fff;border:1px solid #ccc;border-radius:4px;box-shadow:0 18px 50px rgba(0,0,0,.12);overflow:hidden}
-.modalhead{padding:16px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.modalhead h2{margin:0;font-size:15px}
-.modalbody{padding:18px}.modalfoot{padding:12px 18px;border-top:1px solid var(--line);display:flex;justify-content:flex-end;gap:7px}
-.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#171717;color:#fff;padding:10px 13px;border-radius:3px;font-size:10px;font-weight:650;z-index:80;transition:.2s}.toast.show{opacity:1;transform:translate(-50%,0)}
-.mobilemenu{display:none}.muted{color:#999}
-@media(max-width:1050px){.metrics{grid-template-columns:1fr 1fr}.metric{border-bottom:1px solid var(--line)}.grid2{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}}
-@media(max-width:780px){.app{grid-template-columns:1fr}.sidebar{position:fixed;left:-250px;width:235px;transition:.2s;box-shadow:15px 0 40px rgba(0,0,0,.08)}.sidebar.open{left:0}.mobilemenu{display:grid}.topbar{padding:0 16px}.content{padding:26px 17px}.heading{display:block}.heading-actions{margin-top:15px}.approvals,.settings{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.table{min-width:650px}.panel.tablepanel{overflow:auto}.navcta{display:none}}
-@media(max-width:500px){.metrics{grid-template-columns:1fr 1fr}.metric{padding:13px 12px}.metric:first-child{padding-left:12px}.metric strong{font-size:23px}.topbar{height:58px}.heading h1{font-size:28px}.topactions .btn:not(.icon){display:none}}
-</style>
-<style>
-:root{
-  --bg:#ffffff;--surface:#ffffff;--surface2:#f7f7f5;--surface3:#f1f1ee;
-  --line:#e5e5e2;--line2:#cfcfca;--text:#111111;--muted:#73736f;--soft:#f3f3f0;
-  --accent:#151515;--lime:#b7f34a;--green:#23734a;--red:#b33c35;--orange:#9b641d;
-  --shadow:0 10px 35px rgba(0,0,0,.06)
-}
-html[data-theme="dark"]{
-  --bg:#0b0b0b;--surface:#111111;--surface2:#171717;--surface3:#1d1d1d;
-  --line:#292929;--line2:#414141;--text:#f4f4f0;--muted:#999993;--soft:#202020;
-  --accent:#f4f4f0;--lime:#b7f34a;--green:#78d69d;--red:#ff8177;--orange:#e7b56b;
-  --shadow:0 14px 45px rgba(0,0,0,.35)
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;background:var(--bg)}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:14px;letter-spacing:-.01em;transition:background .2s,color .2s}
-button,input,select,textarea{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}
-.app{display:grid;grid-template-columns:248px 1fr;min-height:100vh}
-.sidebar{border-right:1px solid var(--line);padding:25px 16px;position:sticky;top:0;height:100vh;background:var(--surface);z-index:10}
-.brand{display:flex;align-items:center;gap:10px;padding:0 10px 34px;font-size:24px;font-weight:850;letter-spacing:-.07em}
-.mark{width:27px;height:27px;border:2px solid var(--text);border-radius:8px;background:var(--surface);position:relative;box-shadow:3px 3px 0 var(--text)}
-.mark:after{content:"";position:absolute;width:8px;height:8px;border-radius:2px;background:var(--text);right:4px;top:4px}
-.workspace{margin:0 4px 30px;padding:13px;border:1px solid var(--line);border-radius:8px;background:var(--surface2)}
-.workspace small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:5px}
-.workspace strong{font-size:12px;font-weight:700}
-.navlabel{color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.14em;padding:0 10px;margin:22px 0 8px;font-weight:700}
-.nav{display:flex;align-items:center;gap:11px;width:100%;border:0;background:transparent;color:var(--muted);padding:11px 12px;border-radius:7px;text-align:left;font-size:13px;margin:2px 0}
-.nav:hover{background:var(--surface2);color:var(--text)}
-.nav.active{background:var(--text);color:var(--bg);font-weight:700}
-.nav b{width:17px;color:currentColor;font-size:13px;font-weight:600}
-.sidebarbottom{position:absolute;bottom:20px;left:16px;right:16px}
-.user{display:flex;align-items:center;gap:10px;border-top:1px solid var(--line);padding:16px 10px 0}
-.avatar{width:31px;height:31px;border-radius:8px;background:var(--text);color:var(--bg);display:grid;place-items:center;font-weight:800;font-size:10px}
-.user small{display:block;color:var(--muted);font-size:10px;margin-top:3px}
-.mainwrap{min-width:0;background:var(--bg)}
-.topbar{height:72px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 42px;position:sticky;top:0;background:color-mix(in srgb,var(--surface) 94%,transparent);backdrop-filter:blur(12px);z-index:8}
-.crumb{color:var(--muted);font-size:12px}.crumb strong{color:var(--text);font-weight:700}
-.topactions{display:flex;gap:8px;align-items:center}
-.btn{border:1px solid var(--line2);background:var(--surface);color:var(--text);padding:10px 14px;border-radius:7px;font-size:12px;box-shadow:none;transition:.16s ease}
-.btn:hover{background:var(--surface2);border-color:var(--line2);transform:translateY(-1px)}
-.btn.primary{background:var(--text);color:var(--bg);border-color:var(--text);font-weight:750}
-.btn.primary:hover{opacity:.9}
-.btn.danger{color:var(--red)}
-.btn.icon{width:38px;padding:9px;display:grid;place-items:center}
-.theme-toggle{font-size:15px}
-.content{padding:48px 48px 70px;max-width:1500px;margin:0 auto}
-.view{display:none}.view.active{display:block}
-.heading{display:flex;align-items:flex-end;justify-content:space-between;gap:25px;margin-bottom:36px}
-.eyebrow,.pulse-kicker{font-size:10px;text-transform:uppercase;letter-spacing:.15em;color:var(--muted);font-weight:800}
-.heading h1{font-size:42px;letter-spacing:-.065em;line-height:1;margin:9px 0 10px;font-weight:780}
-.heading p{color:var(--muted);font-size:14px;margin:0;line-height:1.5}
-.heading-actions{display:flex;gap:8px;flex-wrap:wrap}
-.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:22px;background:var(--surface)}
-.metric{border-right:1px solid var(--line);padding:22px 23px;background:var(--surface)}
-.metric:first-child{padding-left:23px}.metric:last-child{border-right:0}
-.metric small{color:var(--muted);font-size:10px;letter-spacing:.13em;font-weight:800}
-.metric strong{display:block;font-size:32px;letter-spacing:-.055em;margin:9px 0 3px;font-weight:760}
-.metric span{font-size:12px;color:var(--muted)}.metric .good{color:var(--green)}
-.notice{padding:12px 14px;border:1px solid var(--line);background:var(--surface2);border-radius:8px;color:var(--muted);font-size:11px;margin-bottom:24px}
-.grid2{display:grid;grid-template-columns:1.35fr .8fr;gap:34px}
-.panel{border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow:hidden}
-.panelhead{padding:16px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;background:var(--surface)}
-.panelhead h3{margin:0;font-size:14px;font-weight:750;letter-spacing:-.02em}.panelhead span{color:var(--muted);font-size:10px}
-.table{width:100%;border-collapse:collapse}
-.table th{text-align:left;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.11em;font-weight:800;padding:12px 14px;background:var(--surface2)}
-.table td{padding:14px;border-top:1px solid var(--line);font-size:12px;color:var(--text);vertical-align:middle}
-.table tr:hover td{background:var(--surface2)}
-.person{display:flex;align-items:center;gap:10px}.mini{width:29px;height:29px;border:1px solid var(--line2);border-radius:8px;background:var(--surface2);display:grid;place-items:center;font-size:9px;font-weight:800;color:var(--text)}
-.sub{display:block;color:var(--muted);font-size:10px;margin-top:3px}
-.pill{display:inline-flex;padding:5px 7px;border-radius:999px;background:var(--surface2);color:var(--muted);font-size:9px;white-space:nowrap;border:1px solid var(--line)}
-.pill.green{color:var(--green);background:color-mix(in srgb,var(--green) 9%,var(--surface));border-color:color-mix(in srgb,var(--green) 22%,var(--line))}
-.pill.blue{color:#637f9d;background:color-mix(in srgb,#637f9d 9%,var(--surface));border-color:color-mix(in srgb,#637f9d 20%,var(--line))}
-.pill.orange{color:var(--orange);background:color-mix(in srgb,var(--orange) 9%,var(--surface));border-color:color-mix(in srgb,var(--orange) 20%,var(--line))}
-.pill.red{color:var(--red);background:color-mix(in srgb,var(--red) 9%,var(--surface));border-color:color-mix(in srgb,var(--red) 20%,var(--line))}
-.activity{padding:0 18px}.event{display:flex;gap:11px;padding:16px 0;border-bottom:1px solid var(--line)}.event:last-child{border:0}
-.eventdot{width:7px;height:7px;border-radius:50%;background:var(--text);margin-top:6px;box-shadow:0 0 0 4px color-mix(in srgb,var(--text) 7%,transparent);flex:0 0 auto}
-.event strong{font-size:12px;font-weight:750}.event p{margin:4px 0 0;color:var(--muted);font-size:11px;line-height:1.5}.event time{display:block;color:var(--muted);font-size:9px;margin-top:5px}
-.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.search{flex:1;min-width:220px}
-.field{width:100%;border:1px solid var(--line2);background:var(--surface);color:var(--text);border-radius:7px;padding:11px 12px;outline:0;font-size:12px}
-.field::placeholder{color:var(--muted)}.field:focus{border-color:var(--text);box-shadow:0 0 0 3px color-mix(in srgb,var(--text) 7%,transparent)}
-select.field{appearance:auto}
-.empty{padding:55px 15px;text-align:center;color:var(--muted)}.empty strong{display:block;color:var(--text);margin-bottom:6px}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.campaign{padding:20px;border:1px solid var(--line);border-radius:12px;background:var(--surface);transition:.18s ease;position:relative;overflow:hidden}
-.campaign:before{content:"";display:block;position:absolute;left:0;top:0;width:100%;height:3px;background:var(--line2)}
-.campaign:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--line2)}
-.campaigntop{display:flex;justify-content:space-between;gap:10px;padding-top:2px}.campaign h3{margin:0;font-size:16px;font-weight:760;letter-spacing:-.03em}
-.campaign p{color:var(--muted);font-size:12px;line-height:1.55;min-height:55px;margin:14px 0}
-.campaignmeta{display:flex;justify-content:space-between;color:var(--muted);font-size:10px;border-top:1px solid var(--line);padding-top:12px}
-.campaignactions{display:flex;gap:6px;margin-top:14px}.campaignactions .btn{padding:8px 10px;font-size:10px}
-.progress{height:5px;background:var(--surface3);border-radius:99px;overflow:hidden}.progress i{display:block;height:100%;background:var(--text);border-radius:99px}
-.approvals{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.approval{border:1px solid var(--line);border-radius:12px;padding:20px;background:var(--surface)}
-.approvalhead{display:flex;justify-content:space-between;gap:15px}.approval h3{font-size:16px;margin:0;font-weight:760}
-.approval .mail{margin:17px 0;padding:16px;border:1px solid var(--line);border-radius:9px;background:var(--surface2);color:var(--muted);font-size:12px;line-height:1.7}
-.approvalfooter{display:flex;justify-content:space-between;align-items:center}.approvalfooter small{color:var(--muted);font-size:9px}
-.settings{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.setting{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:20px}
-.setting h3{font-size:15px;margin:0 0 6px;font-weight:750}.setting p{color:var(--muted);font-size:11px;line-height:1.6;margin:0 0 18px}
-.rowfield{margin:12px 0}.rowfield label{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:7px;font-weight:800}
-.switch{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-top:1px solid var(--line);font-size:12px}
-.toggle{width:38px;height:21px;border-radius:99px;background:var(--line2);padding:3px;border:0}.toggle i{display:block;width:15px;height:15px;background:var(--surface);border-radius:50%;transition:.18s;box-shadow:0 1px 2px rgba(0,0,0,.15)}
-.toggle.on{background:var(--text)}.toggle.on i{transform:translateX(17px);background:var(--bg)}
-.modalback{position:fixed;inset:0;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:18px;z-index:50}
-.modalback.show{display:flex}.modal{width:min(540px,100%);background:var(--surface);border:1px solid var(--line2);border-radius:12px;box-shadow:0 25px 80px rgba(0,0,0,.18);overflow:hidden}
-.modalhead{padding:18px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.modalhead h2{margin:0;font-size:17px}
-.modalbody{padding:20px}.modalfoot{padding:14px 20px;border-top:1px solid var(--line);display:flex;justify-content:flex-end;gap:8px}
-.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--text);color:var(--bg);padding:11px 14px;border-radius:8px;font-size:11px;font-weight:750;z-index:80;transition:.2s}.toast.show{opacity:1;transform:translate(-50%,0)}
-.mobilemenu{display:none}.muted{color:var(--muted)}
-.overview-pulse{display:grid;grid-template-columns:1.7fr .7fr;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:24px;background:var(--surface);min-height:285px}
-.pulse-main{padding:25px 26px 17px;border-right:1px solid var(--line);position:relative}
-.pulse-top{display:flex;justify-content:space-between;gap:20px}.pulse-top h2{font-size:26px;letter-spacing:-.05em;margin:7px 0 6px}.pulse-top p{font-size:12px;color:var(--muted);margin:0;max-width:540px;line-height:1.5}
-.live-dot{font-size:9px;letter-spacing:.12em;font-weight:800;height:max-content;padding:6px 8px;border:1px solid color-mix(in srgb,var(--green) 28%,var(--line));color:var(--green);border-radius:999px}
-.pulse-chart{height:175px;margin-top:13px;color:var(--text)}.pulse-chart svg{width:100%;height:150px;display:block}
-.chart-fill{fill:url(#pulseFill)}.chart-line{fill:none;stroke:currentColor;stroke-width:3;vector-effect:non-scaling-stroke}.chart-point{fill:var(--lime);stroke:var(--text);stroke-width:3;vector-effect:non-scaling-stroke}
-.chart-labels{display:flex;justify-content:space-between;color:var(--muted);font-size:9px;padding:0 2px}
-.pulse-side{display:flex;flex-direction:column;padding:12px 0}.signal{display:flex;gap:12px;align-items:center;padding:19px 21px;border-bottom:1px solid var(--line)}.signal-icon{width:34px;height:34px;border-radius:9px;background:var(--surface2);display:grid;place-items:center;font-size:16px}.signal strong{display:block;font-size:14px}.signal small{display:block;color:var(--muted);font-size:10px;margin-top:2px}.pulse-link{margin-top:auto;border:0;background:transparent;color:var(--text);font-size:11px;font-weight:750;text-align:left;padding:18px 21px}.pulse-link span{float:right;font-size:15px}
-html[data-theme="dark"] .mark{box-shadow:3px 3px 0 var(--lime)}html[data-theme="dark"] .nav.active{color:#0b0b0b;background:var(--lime)}html[data-theme="dark"] .btn.primary{color:#0b0b0b;background:var(--lime);border-color:var(--lime)}html[data-theme="dark"] .progress i{background:var(--lime)}
-@media(max-width:1050px){.metrics{grid-template-columns:1fr 1fr}.metric{border-bottom:1px solid var(--line)}.grid2{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}.overview-pulse{grid-template-columns:1fr}.pulse-main{border-right:0;border-bottom:1px solid var(--line)}}
-@media(max-width:780px){.app{grid-template-columns:1fr}.sidebar{position:fixed;left:-275px;width:260px;transition:.2s;box-shadow:15px 0 40px rgba(0,0,0,.16)}.sidebar.open{left:0}.mobilemenu{display:grid}.topbar{padding:0 16px}.content{padding:30px 17px 50px}.heading{display:block}.heading-actions{margin-top:17px}.heading h1{font-size:36px}.approvals,.settings{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.table{min-width:720px}.panel.tablepanel{overflow:auto}.navcta{display:none}.topactions .pill{display:none}.overview-pulse{margin-left:0;margin-right:0}.pulse-top h2{font-size:23px}}
-@media(max-width:500px){.metrics{grid-template-columns:1fr 1fr}.metric{padding:15px 13px}.metric:first-child{padding-left:13px}.metric strong{font-size:26px}.topbar{height:62px}.heading h1{font-size:32px}.topactions .btn:not(.icon){display:none}.pulse-main{padding:21px 18px}.pulse-side{display:grid;grid-template-columns:1fr 1fr}.signal{padding:14px 15px}.pulse-link{grid-column:1/-1;padding:15px}.pulse-chart{height:155px}}
+:root{--bg:#f7f7f5;--surface:#fff;--surface2:#f0f0ed;--surface3:#e8e8e4;--line:#deded9;--line2:#c8c8c2;--text:#111;--muted:#74746e;--accent:#111;--lime:#b7f34a;--green:#238052;--red:#bd443d;--amber:#a46a20;--shadow:0 20px 55px rgba(0,0,0,.08)}
+[data-theme=dark]{--bg:#090a09;--surface:#101110;--surface2:#171817;--surface3:#202120;--line:#2b2d2b;--line2:#444744;--text:#f5f5ef;--muted:#92958e;--accent:#f5f5ef;--lime:#b7f34a;--green:#76d89f;--red:#ff837a;--amber:#e8b86e;--shadow:0 24px 65px rgba(0,0,0,.4)}
+*{box-sizing:border-box}html{background:var(--bg);scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:-.01em}button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
+.app{display:grid;grid-template-columns:248px 1fr;min-height:100vh}.sidebar{position:sticky;top:0;height:100vh;background:var(--surface);border-right:1px solid var(--line);padding:24px 15px;z-index:30}.brand{display:flex;align-items:center;gap:10px;padding:0 10px 28px;font-size:24px;font-weight:850;letter-spacing:-.07em}.mark{width:28px;height:28px;border:2px solid var(--text);border-radius:8px;position:relative;box-shadow:3px 3px 0 var(--text)}.mark:after{content:"";position:absolute;width:8px;height:8px;background:var(--text);border-radius:2px;right:4px;top:4px}.workspace{padding:12px;margin:0 4px 25px;border:1px solid var(--line);background:var(--surface2);border-radius:9px}.workspace small,.navlabel{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.14em;font-weight:800}.workspace strong{font-size:12px}.navlabel{margin:20px 10px 7px}.nav{display:flex;align-items:center;gap:11px;width:100%;border:0;background:transparent;color:var(--muted);padding:10px 12px;border-radius:7px;text-align:left;font-size:13px;margin:2px 0}.nav:hover{background:var(--surface2);color:var(--text)}.nav.active{background:var(--text);color:var(--bg);font-weight:750}.nav b{width:17px;font-size:12px}.badge{margin-left:auto;min-width:19px;padding:2px 5px;border-radius:99px;background:var(--lime);color:#101010;font-size:9px;text-align:center;font-weight:800}.sidebarbottom{position:absolute;bottom:18px;left:15px;right:15px}.user{border-top:1px solid var(--line);padding:14px 10px 0;display:flex;gap:10px;align-items:center}.avatar{width:31px;height:31px;border-radius:8px;background:var(--text);color:var(--bg);display:grid;place-items:center;font-size:10px;font-weight:800}.user small{display:block;color:var(--muted);font-size:10px}
+.main{min-width:0}.topbar{height:70px;position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:0 42px;background:color-mix(in srgb,var(--surface) 94%,transparent);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}.crumb{color:var(--muted);font-size:12px}.crumb strong{color:var(--text)}.topactions{display:flex;gap:7px;align-items:center}.connection{font-size:10px;color:var(--muted);margin-right:5px}.btn{border:1px solid var(--line2);background:var(--surface);color:var(--text);border-radius:7px;padding:9px 13px;font-size:11px;font-weight:650;transition:.16s}.btn:hover{transform:translateY(-1px);background:var(--surface2)}.btn.primary{background:var(--text);color:var(--bg);border-color:var(--text)}.btn.lime{background:var(--lime);color:#111;border-color:var(--lime)}.btn.icon{width:37px;height:37px;padding:0;display:grid;place-items:center}.content{max-width:1500px;margin:auto;padding:45px 48px 80px}.view{display:none}.view.active{display:block}.heading{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:30px}.eyebrow{color:var(--muted);font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.16em}.heading h1{font-size:42px;line-height:1;letter-spacing:-.07em;margin:8px 0 10px}.heading p{margin:0;color:var(--muted);font-size:14px}.heading-actions{display:flex;gap:7px}
+.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:16px;margin-bottom:18px}.heroCard{border:1px solid var(--line);border-radius:15px;background:var(--surface);padding:28px;position:relative;overflow:hidden}.heroCard.mainHero{min-height:265px;background:var(--text);color:var(--bg);border-color:var(--text)}.heroCard.mainHero:after{content:"";position:absolute;width:250px;height:250px;border:1px solid color-mix(in srgb,var(--bg) 18%,transparent);border-radius:50%;right:-55px;bottom:-110px;box-shadow:0 0 0 35px color-mix(in srgb,var(--bg) 4%,transparent),0 0 0 70px color-mix(in srgb,var(--bg) 3%,transparent)}.heroTitle{font-size:40px;line-height:.98;letter-spacing:-.07em;font-weight:800;max-width:600px;position:relative;z-index:1}.heroCopy{max-width:500px;color:color-mix(in srgb,var(--bg) 65%,transparent);margin:17px 0 24px;position:relative;z-index:1}.heroActions{display:flex;gap:8px;position:relative;z-index:2}.heroCard.mainHero .btn{background:transparent;color:var(--bg);border-color:color-mix(in srgb,var(--bg) 30%,transparent)}.heroCard.mainHero .btn.lime{background:var(--lime);color:#111;border-color:var(--lime)}.radar{height:100%;min-height:209px;display:flex;flex-direction:column;justify-content:space-between}.radarTop{display:flex;justify-content:space-between}.live{display:flex;gap:7px;align-items:center;color:var(--green);font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.12em}.live i{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 5px color-mix(in srgb,var(--green) 13%,transparent);animation:pulse 2s infinite}@keyframes pulse{50%{opacity:.35;transform:scale(.8)}}.radarNumber{font-size:70px;line-height:.9;letter-spacing:-.09em;font-weight:800;margin-top:22px}.radarBottom{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:14px;color:var(--muted);font-size:11px}.metrics{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface);margin-bottom:20px}.metric{padding:19px 21px;border-right:1px solid var(--line)}.metric:last-child{border:0}.metric small{display:block;color:var(--muted);font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.13em}.metric strong{display:block;font-size:30px;letter-spacing:-.06em;margin:7px 0 1px}.metric span{font-size:11px;color:var(--muted)}
+.pulse{display:grid;grid-template-columns:1.35fr .65fr;gap:16px;margin-bottom:22px}.panel{border:1px solid var(--line);border-radius:13px;background:var(--surface);overflow:hidden}.panelhead{display:flex;justify-content:space-between;align-items:center;padding:15px 17px;border-bottom:1px solid var(--line)}.panelhead h3{margin:0;font-size:13px}.panelhead span{color:var(--muted);font-size:10px}.chart{padding:15px 18px 8px}.chart svg{width:100%;height:135px;display:block}.chartStats{display:flex;gap:25px;padding:5px 18px 15px}.chartStats strong{font-size:18px}.chartStats span{display:block;color:var(--muted);font-size:9px}.signals{padding:4px 17px}.signal{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--line);font-size:11px}.signal:last-child{border:0}.signal b{font-size:17px}.signal span{color:var(--muted)}
+.grid2{display:grid;grid-template-columns:1.35fr .65fr;gap:16px}.table{width:100%;border-collapse:collapse}.table th{background:var(--surface2);padding:11px 14px;text-align:left;color:var(--muted);font-size:8px;text-transform:uppercase;letter-spacing:.12em}.table td{padding:13px 14px;border-top:1px solid var(--line);font-size:11px}.table tr:hover td{background:var(--surface2)}.person{display:flex;gap:9px;align-items:center}.mini{width:28px;height:28px;border-radius:8px;background:var(--surface2);border:1px solid var(--line2);display:grid;place-items:center;font-size:9px;font-weight:800}.sub{display:block;color:var(--muted);font-size:9px;margin-top:2px}.pill{display:inline-flex;padding:4px 7px;border:1px solid var(--line);border-radius:99px;background:var(--surface2);color:var(--muted);font-size:8px;font-weight:700}.pill.green{color:var(--green)}.pill.red{color:var(--red)}.pill.orange{color:var(--amber)}.activity{padding:0 17px}.event{display:flex;gap:10px;padding:14px 0;border-bottom:1px solid var(--line)}.event:last-child{border:0}.eventdot{width:6px;height:6px;border-radius:50%;background:var(--text);margin-top:6px;flex:0 0 auto}.event strong{font-size:11px}.event p{margin:3px 0;color:var(--muted);font-size:10px}.event time{color:var(--muted);font-size:8px}
+.toolbar{display:flex;gap:8px;margin-bottom:16px}.search{flex:1}.field{width:100%;padding:10px 11px;border:1px solid var(--line2);border-radius:7px;background:var(--surface);color:var(--text);outline:0;font-size:11px}.field:focus{border-color:var(--text);box-shadow:0 0 0 3px color-mix(in srgb,var(--text) 7%,transparent)}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.campaign{padding:19px;border:1px solid var(--line);border-radius:12px;background:var(--surface);transition:.18s}.campaign:hover{transform:translateY(-3px);box-shadow:var(--shadow)}.campaign h3{font-size:16px;margin:0}.campaign p{color:var(--muted);font-size:11px;min-height:50px}.campaigntop,.campaignmeta,.approvalhead,.approvalfooter{display:flex;justify-content:space-between;gap:10px;align-items:center}.campaignmeta{border-top:1px solid var(--line);padding-top:11px;color:var(--muted);font-size:9px}.progress{height:4px;background:var(--surface3);margin:13px 0}.progress i{display:block;height:100%;background:var(--text)}.campaignactions{display:flex;gap:6px;margin-top:13px}.campaignactions .btn{font-size:9px;padding:7px 9px}
+.approvals{display:grid;grid-template-columns:1fr 1fr;gap:15px}.approval{padding:20px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}.approval h3{margin:0;font-size:15px}.mail{margin:16px 0;padding:15px;border:1px solid var(--line);background:var(--surface2);border-radius:8px;color:var(--muted);font-size:11px;line-height:1.7}.settings{display:grid;grid-template-columns:1fr 1fr;gap:15px}.setting{padding:20px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}.setting h3{margin:0 0 5px;font-size:14px}.setting p{color:var(--muted);font-size:10px}.rowfield{margin:12px 0}.rowfield label{display:block;color:var(--muted);font-size:8px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:5px}.switch{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding:12px 0;font-size:10px}.toggle{width:36px;height:20px;border:0;border-radius:99px;background:var(--surface3);padding:2px}.toggle i{display:block;width:16px;height:16px;border-radius:50%;background:var(--surface);transition:.18s}.toggle.on{background:var(--lime)}.toggle.on i{transform:translateX(16px);background:#111}.empty{text-align:center;padding:45px;color:var(--muted)}.empty strong{display:block;color:var(--text);margin-bottom:5px}
+.modalback{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:18px;z-index:80}.modalback.show{display:flex}.modal{width:min(520px,100%);background:var(--surface);border:1px solid var(--line2);border-radius:13px;box-shadow:var(--shadow);overflow:hidden}.modalhead,.modalfoot{padding:14px 17px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.modalhead h2{font-size:15px;margin:0}.modalbody{padding:17px}.modalfoot{border-top:1px solid var(--line);border-bottom:0;justify-content:flex-end}.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,25px);opacity:0;background:var(--text);color:var(--bg);padding:10px 14px;border-radius:8px;font-size:10px;font-weight:700;pointer-events:none;transition:.2s;z-index:100}.toast.show{opacity:1;transform:translate(-50%,0)}.command{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:flex-start;justify-content:center;padding-top:14vh;z-index:90}.command.show{display:flex}.commandbox{width:min(650px,calc(100% - 30px));background:var(--surface);border:1px solid var(--line2);border-radius:13px;box-shadow:var(--shadow);overflow:hidden}.command input{width:100%;border:0;border-bottom:1px solid var(--line);padding:18px;background:transparent;color:var(--text);outline:0;font-size:17px}.commands{padding:7px}.cmd{width:100%;border:0;background:transparent;color:var(--text);display:flex;justify-content:space-between;padding:12px;border-radius:7px;text-align:left}.cmd:hover{background:var(--surface2)}.cmd small{color:var(--muted)}
+.mobilemenu{display:none}
+@media(max-width:1100px){.hero,.pulse,.grid2{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}.metrics{grid-template-columns:1fr 1fr}.metric{border-bottom:1px solid var(--line)}}@media(max-width:780px){.app{grid-template-columns:1fr}.sidebar{position:fixed;left:-260px;width:248px;transition:.2s;box-shadow:20px 0 50px rgba(0,0,0,.15)}.sidebar.open{left:0}.mobilemenu{display:grid}.topbar{padding:0 16px}.content{padding:28px 16px 60px}.heading{display:block}.heading-actions{margin-top:15px}.heading h1{font-size:34px}.heroTitle{font-size:34px}.cards,.approvals,.settings{grid-template-columns:1fr}.topactions .btn:not(.icon),.connection{display:none}.table{min-width:650px}.panel.tablepanel{overflow:auto}}@media(max-width:500px){.metrics{grid-template-columns:1fr 1fr}.metric{padding:15px}.metric strong{font-size:25px}.heroCard{padding:22px}.radarNumber{font-size:56px}}
 </style>
 </head>
 <body>
 <div class="app">
 <aside class="sidebar" id="sidebar">
-  <div class="brand"><span class="mark"></span>kyro</div>
-  <div class="workspace"><small>Workspace</small><strong>Kcreatives Outreach</strong></div>
-  <div class="navlabel">Operate</div>
-  <button class="nav active" data-view="overview"><b>⌂</b> Overview</button>
-  <button class="nav" data-view="prospects"><b>◈</b> Prospects</button>
-  <button class="nav" data-view="campaigns"><b>✦</b> Campaigns</button>
-  <button class="nav" data-view="approvals"><b>✓</b> Approvals <span id="approvalCount" style="margin-left:auto;color:var(--lime)"></span></button>
-  <button class="nav" data-view="activity"><b>↗</b> Activity</button>
-  <div class="navlabel">Manage</div>
-  <button class="nav" data-view="settings"><b>⚙</b> Settings</button>
-  <div class="sidebarbottom"><div class="user"><div class="avatar">GK</div><div><strong style="font-size:11px">Glen</strong><small>Owner · Demo workspace</small></div></div></div>
+<div class="brand"><span class="mark"></span>kyro</div>
+<div class="workspace"><small>Workspace</small><strong id="workspaceLabel">Kcreatives Outreach</strong></div>
+<div class="navlabel">Workspace</div>
+<button class="nav active" data-view="overview"><b>⌂</b>Overview</button>
+<button class="nav" data-view="prospects"><b>◌</b>Prospects</button>
+<button class="nav" data-view="campaigns"><b>↗</b>Campaigns</button>
+<button class="nav" data-view="approvals"><b>✓</b>Approvals <span class="badge" id="approvalCount"></span></button>
+<div class="navlabel">Observe</div>
+<button class="nav" data-view="activity"><b>◷</b>Activity</button>
+<div class="navlabel">Workspace</div>
+<button class="nav" data-view="settings"><b>⚙</b>Settings</button>
+<div class="sidebarbottom"><div class="user"><div class="avatar">GK</div><div><strong>Glen</strong><small>Owner</small></div></div></div>
 </aside>
-
-<div class="mainwrap">
-<header class="topbar">
-  <div style="display:flex;align-items:center;gap:12px"><button class="btn icon mobilemenu" onclick="toggleSidebar()">☰</button><div class="crumb">Kyro / <strong id="crumb">Overview</strong></div></div>
-  <div class="topactions"><span class="pill green" id="connection">● Local workspace</span><button class="btn icon theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle dark mode"><span id="themeIcon">☾</span></button><button class="btn" onclick="openModal('prospect')">+ Prospect</button><button class="btn primary" onclick="openModal('campaign')">New campaign</button></div>
-</header>
-
-<main class="content">
+<main class="main">
+<header class="topbar"><div style="display:flex;align-items:center;gap:12px"><button class="btn icon mobilemenu" onclick="toggleSidebar()">☰</button><div class="crumb">Kyro / <strong id="crumb">Overview</strong></div></div><div class="topactions"><span class="connection" id="connection">● Local workspace</span><button class="btn icon" title="Search" onclick="openCommand()">⌕</button><button class="btn icon" id="themeToggle" title="Toggle theme" onclick="toggleTheme()">☾</button><button class="btn" onclick="refreshAll()">Refresh</button><button class="btn primary" onclick="openModal('prospect')">+ Prospect</button></div></header>
+<div class="content">
 <section class="view active" id="view-overview">
-  <div class="heading"><div><div class="eyebrow">Kyro overview</div><h1>Your outreach, in motion.</h1><p>See what is moving, what is waiting and what deserves your attention.</p></div><div class="heading-actions"><button class="btn" onclick="refreshAll()">↻ Refresh</button></div></div>
-  <div class="metrics">
-    <div class="metric"><small>PROSPECTS</small><strong id="mProspects">0</strong><span id="mProspectsNote">Your pipeline</span></div>
-    <div class="metric"><small>APPROVED</small><strong id="mApproved">0</strong><span class="good">Ready to move</span></div>
-    <div class="metric"><small>REPLIES</small><strong id="mReplies">0</strong><span class="good">Conversation signal</span></div>
-    <div class="metric"><small>ACTIVE CAMPAIGNS</small><strong id="mCampaigns">0</strong><span>Currently running</span></div>
-  </div>
-  <div class="overview-pulse">
-    <div class="pulse-main">
-      <div class="pulse-top"><div><span class="pulse-kicker">OUTREACH PULSE</span><h2>Momentum is building.</h2><p>Your workspace at a glance — where conversations are moving and where attention is needed.</p></div><span class="live-dot">LIVE</span></div>
-      <div class="pulse-chart" aria-label="Outreach activity trend">
-        <svg viewBox="0 0 760 170" preserveAspectRatio="none" role="img">
-          <defs><linearGradient id="pulseFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".18"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>
-          <path class="chart-fill" d="M0 138 C70 132 80 112 145 120 S230 96 285 108 S370 70 430 86 S500 55 560 72 S645 34 760 46 L760 170 L0 170 Z"/>
-          <path class="chart-line" d="M0 138 C70 132 80 112 145 120 S230 96 285 108 S370 70 430 86 S500 55 560 72 S645 34 760 46"/>
-          <circle cx="760" cy="46" r="5" class="chart-point"/>
-        </svg>
-        <div class="chart-labels"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Today</span></div>
-      </div>
-    </div>
-    <div class="pulse-side">
-      <div class="signal"><span class="signal-icon">↗</span><div><strong>2 ready</strong><small>approved prospects</small></div></div>
-      <div class="signal"><span class="signal-icon">◷</span><div><strong>1 waiting</strong><small>needs your review</small></div></div>
-      <div class="signal"><span class="signal-icon">↳</span><div><strong>1 reply</strong><small>conversation opened</small></div></div>
-      <button class="pulse-link" onclick="showView('activity')">View activity <span>→</span></button>
-    </div>
-  </div>
-  <div class="notice">Changes are stored locally in this browser. The workspace stays usable when the API is unavailable.</div>
-  <div class="grid2">
-    <div class="panel tablepanel"><div class="panelhead"><h3>Pipeline</h3><span id="pipelineCount">0 prospects</span></div><div id="pipeline"></div></div>
-    <div class="panel"><div class="panelhead"><h3>Recent activity</h3><span>Latest events</span></div><div class="activity" id="recentActivity"></div></div>
-  </div>
-</section>
-
-<section class="view" id="view-prospects">
-  <div class="heading"><div><div class="eyebrow">Relationship database</div><h1>Prospects</h1><p>Keep contacts, status and next steps in one place.</p></div><div class="heading-actions"><button class="btn primary" onclick="openModal('prospect')">+ Add prospect</button></div></div>
-  <div class="toolbar"><div class="search"><input class="field" id="prospectSearch" placeholder="Search name, company or email…" oninput="renderProspects()"></div><select class="field" style="max-width:180px" id="prospectFilter" onchange="renderProspects()"><option value="All">All statuses</option><option>New</option><option>Draft</option><option>Approved</option><option>Replied</option><option>Interested</option><option>Not Interested</option><option>Do Not Contact</option></select></div>
-  <div class="panel tablepanel"><table class="table"><thead><tr><th>Prospect</th><th>Channel</th><th>Campaign</th><th>Status</th><th>Note</th><th></th></tr></thead><tbody id="prospectRows"></tbody></table></div>
-</section>
-
-<section class="view" id="view-campaigns">
-  <div class="heading"><div><div class="eyebrow">Sequences</div><h1>Campaigns</h1><p>Keep each outreach initiative focused and easy to follow.</p></div><div class="heading-actions"><button class="btn primary" onclick="openModal('campaign')">+ New campaign</button></div></div>
-  <div class="cards" id="campaignCards"></div>
-</section>
-
-<section class="view" id="view-approvals">
-  <div class="heading"><div><div class="eyebrow">Human checkpoint</div><h1>Approvals</h1><p>Review messages before they move into the active pipeline.</p></div></div>
-  <div class="approvals" id="approvals"></div>
-</section>
-
-<section class="view" id="view-activity">
-  <div class="heading"><div><div class="eyebrow">Audit trail</div><h1>Activity</h1><p>See what changed, when it changed and why.</p></div></div>
-  <div class="panel"><div class="activity" id="activityAll"></div></div>
-</section>
-
-<section class="view" id="view-settings">
-  <div class="heading"><div><div class="eyebrow">Workspace controls</div><h1>Settings</h1><p>Set the basics before you turn on more automation.</p></div></div>
-  <div class="settings">
-    <div class="setting"><h3>Workspace identity</h3><p>Basic information used throughout the interface.</p><div class="rowfield"><label>Workspace name</label><input class="field" value="Kcreatives Outreach" id="workspaceName"></div><div class="rowfield"><label>Owner</label><input class="field" value="Glen" id="ownerName"></div><button class="btn primary" onclick="saveSettings()">Save settings</button></div>
-    <div class="setting"><h3>Automation guardrails</h3><p>These controls are deliberately conservative. Email sending is not enabled by this frontend.</p><div class="switch"><span>Human approval required</span><button class="toggle on" id="approvalToggle" onclick="toggleSetting(this)"><i></i></button></div><div class="switch"><span>Pause on reply</span><button class="toggle on" onclick="toggleSetting(this)"><i></i></button></div><div class="switch"><span>Daily send ceiling</span><span class="pill">10 / day</span></div></div>
-    <div class="setting"><h3>Data</h3><p>Resetting clears this browser's local demo data. It does not affect another device.</p><button class="btn danger" onclick="resetDemo()">Reset demo workspace</button></div>
-    <div class="setting"><h3>Deployment</h3><p>Kyro uses a dependency-free HTML frontend and Python serverless endpoints. The backend is intentionally safe to run without email credentials.</p><div class="switch"><span>API health</span><span class="pill green" id="apiHealth">Checking…</span></div></div>
-  </div>
-</section>
-</main>
+<div class="heading"><div><div class="eyebrow">Outbound workspace</div><h1>Your outreach, in motion.</h1><p>One place to see what is moving, what needs your attention and what happens next.</p></div><div class="heading-actions"><button class="btn" onclick="showView('activity')">View activity</button><button class="btn primary" onclick="openModal('campaign')">New campaign</button></div></div>
+<div class="hero">
+<div class="heroCard mainHero"><div class="eyebrow" style="color:inherit;opacity:.55">KYRO CONTROL ROOM</div><div class="heroTitle">Less chasing.<br>More conversations.</div><div class="heroCopy">Your pipeline is the product. Keep the signal high, approve the right messages, and let every reply become the next move.</div><div class="heroActions"><button class="btn lime" onclick="showView('prospects')">Open pipeline →</button><button class="btn" onclick="showView('approvals')">Review queue</button></div></div>
+<div class="heroCard radar"><div class="radarTop"><div><div class="eyebrow">Momentum</div><div class="live"><i></i> Live workspace</div></div><span class="pill green">Healthy</span></div><div><div class="radarNumber" id="heroReplies">0</div><div style="color:var(--muted);font-size:11px">active conversations</div></div><div class="radarBottom"><span id="heroReady">0 ready to move</span><span>Today</span></div></div>
 </div>
-</div>
-
-<div class="modalback" id="modal">
-<div class="modal">
-  <div class="modalhead"><h2 id="modalTitle">Add prospect</h2><button class="btn icon" onclick="closeModal()">×</button></div>
-  <form id="modalForm" onsubmit="submitModal(event)">
-    <div class="modalbody" id="modalBody"></div>
-    <div class="modalfoot"><button type="button" class="btn" onclick="closeModal()">Cancel</button><button class="btn primary" type="submit" id="modalSubmit">Save</button></div>
-  </form>
-</div>
-</div>
+<div class="metrics"><div class="metric"><small>Prospects</small><strong id="mProspects">0</strong><span>in your pipeline</span></div><div class="metric"><small>Approved</small><strong id="mApproved">0</strong><span>ready for outreach</span></div><div class="metric"><small>Replies</small><strong id="mReplies">0</strong><span>signals received</span></div><div class="metric"><small>Active campaigns</small><strong id="mCampaigns">0</strong><span>currently running</span></div></div>
+<div class="pulse"><div class="panel"><div class="panelhead"><h3>Outreach pulse</h3><span>Last 7 days</span></div><div class="chart"><svg viewBox="0 0 700 150" preserveAspectRatio="none"><path d="M0 124 C55 120 75 128 120 103 S185 112 230 83 S290 101 335 76 S400 88 450 51 S510 67 555 43 S620 59 700 24" fill="none" stroke="currentColor" stroke-width="3"/><path d="M0 124 C55 120 75 128 120 103 S185 112 230 83 S290 101 335 76 S400 88 450 51 S510 67 555 43 S620 59 700 24 L700 150 L0 150Z" fill="currentColor" opacity=".045"/><line x1="0" y1="145" x2="700" y2="145" stroke="currentColor" opacity=".12"/></svg></div><div class="chartStats"><div><strong id="pulseScore">+24%</strong><span>pipeline movement</span></div><div><strong id="pulseApproved">0</strong><span>approved this cycle</span></div><div><strong id="pulseReplies">0</strong><span>reply signals</span></div></div></div>
+<div class="panel"><div class="panelhead"><h3>Signals</h3><span>Right now</span></div><div class="signals"><div class="signal"><span>Ready to send</span><b id="sigReady">0</b></div><div class="signal"><span>Waiting review</span><b id="sigReview">0</b></div><div class="signal"><span>Replies</span><b id="sigReply">0</b></div><div class="signal"><span>Active sequences</span><b id="sigCampaigns">0</b></div></div></div></div>
+<div class="grid2"><div class="panel"><div class="panelhead"><h3>Pipeline</h3><span id="pipelineCount">0 prospects</span></div><div id="pipeline"></div></div><div class="panel"><div class="panelhead"><h3>Recent activity</h3><button class="btn" onclick="showView('activity')">All</button></div><div class="activity" id="recentActivity"></div></div></div>
+</section>
+<section class="view" id="view-prospects"><div class="heading"><div><div class="eyebrow">Pipeline</div><h1>Prospects</h1><p>Keep every relationship visible and every next step intentional.</p></div><button class="btn primary" onclick="openModal('prospect')">+ Add prospect</button></div><div class="toolbar"><div class="search"><input class="field" id="prospectSearch" placeholder="Search name, company or email…" oninput="renderProspects()"></div><select class="field" id="prospectFilter" style="max-width:180px" onchange="renderProspects()"><option>All</option><option>New</option><option>Draft</option><option>Approved</option><option>Replied</option><option>Interested</option><option>Not Interested</option><option>Do Not Contact</option></select></div><div class="panel tablepanel"><table class="table"><thead><tr><th>Prospect</th><th>Channel</th><th>Campaign</th><th>Status</th><th>Note</th><th></th></tr></thead><tbody id="prospectRows"></tbody></table></div></section>
+<section class="view" id="view-campaigns"><div class="heading"><div><div class="eyebrow">Sequences</div><h1>Campaigns</h1><p>Give each outreach initiative a clear goal and a visible pulse.</p></div><button class="btn primary" onclick="openModal('campaign')">+ New campaign</button></div><div class="cards" id="campaignCards"></div></section>
+<section class="view" id="view-approvals"><div class="heading"><div><div class="eyebrow">Human checkpoint</div><h1>Approvals</h1><p>Nothing leaves the workspace without the decision you want.</p></div></div><div class="approvals" id="approvals"></div></section>
+<section class="view" id="view-activity"><div class="heading"><div><div class="eyebrow">Audit trail</div><h1>Activity</h1><p>A living record of what changed, when and why.</p></div></div><div class="panel"><div class="activity" id="activityAll"></div></div></section>
+<section class="view" id="view-settings"><div class="heading"><div><div class="eyebrow">Control room</div><h1>Settings</h1><p>Shape the workspace before you automate more of it.</p></div></div><div class="settings"><div class="setting"><h3>Workspace identity</h3><p>Basic information shown across Kyro.</p><div class="rowfield"><label>Workspace name</label><input class="field" id="workspaceName" value="Kcreatives Outreach"></div><div class="rowfield"><label>Owner</label><input class="field" id="ownerName" value="Glen"></div><button class="btn primary" onclick="saveSettings()">Save settings</button></div><div class="setting"><h3>Guardrails</h3><p>Keep automation human-led until you are ready.</p><div class="switch"><span>Human approval required</span><button class="toggle on" onclick="toggleSetting(this)"><i></i></button></div><div class="switch"><span>Pause on reply</span><button class="toggle on" onclick="toggleSetting(this)"><i></i></button></div><div class="switch"><span>Daily send ceiling</span><span class="pill">10 / day</span></div></div><div class="setting"><h3>Local data</h3><p>This prototype stores demo workspace data in this browser.</p><button class="btn" onclick="resetDemo()">Reset demo workspace</button></div><div class="setting"><h3>Deployment</h3><p>Python API health and the local-first workspace are available without email credentials.</p><div class="switch"><span>API health</span><span class="pill green" id="apiHealth">Checking…</span></div></div></div></section>
+</div></main></div>
+<div class="modalback" id="modal"><div class="modal"><div class="modalhead"><h2 id="modalTitle"></h2><button class="btn icon" onclick="closeModal()">×</button></div><form id="modalForm" onsubmit="submitModal(event)"><div class="modalbody" id="modalBody"></div><div class="modalfoot"><button type="button" class="btn" onclick="closeModal()">Cancel</button><button class="btn primary" id="modalSubmit">Save</button></div></form></div></div>
+<div class="command" id="command"><div class="commandbox"><input id="commandInput" placeholder="Jump to anything…" oninput="filterCommands()"><div class="commands" id="commands"></div></div></div>
 <div class="toast" id="toast"></div>
-
 <script>
 const KEY='kyro_workspace_v1';
-const seed={
-  prospects:[
-    {id:'p1',name:'Amani Media',company:'Amani Media',email:'hello@amani.example',channel:'Email',status:'Approved',campaign:'Launch Q4',note:'Strong fit for a creator-led campaign.'},
-    {id:'p2',name:'Nova Brand',company:'Nova Brand',email:'team@nova.example',channel:'Email',status:'Draft',campaign:'Creator push',note:'Review opening before approval.'},
-    {id:'p3',name:'Kipepeo Co.',company:'Kipepeo Co.',email:'hello@kipepeo.example',channel:'Instagram',status:'Replied',campaign:'Partnership',note:'Asked for rate card.'},
-    {id:'p4',name:'Studio Tamu',company:'Studio Tamu',email:'hello@studio.example',channel:'Email',status:'Approved',campaign:'Intro campaign',note:'Follow up Friday.'}
-  ],
-  campaigns:[
-    {id:'c1',name:'Launch Q4',status:'Active',channel:'Email',goal:'Introduce Kcreatives production services.'},
-    {id:'c2',name:'Creator push',status:'Draft',channel:'Email',goal:'Start conversations with creator-first brands.'},
-    {id:'c3',name:'Partnership',status:'Paused',channel:'Instagram',goal:'Build strategic collaboration pipeline.'}
-  ],
-  activity:[
-    {id:'a1',kind:'Approval',message:'Amani Media moved to Approved',created_at:new Date().toISOString()},
-    {id:'a2',kind:'Reply',message:'Kipepeo Co. replied to the partnership outreach',created_at:new Date(Date.now()-3600000).toISOString()},
-    {id:'a3',kind:'Campaign',message:'Launch Q4 campaign is active',created_at:new Date(Date.now()-7200000).toISOString()}
-  ]
-};
-
-function applyTheme(theme){
-  const t=theme==='dark'?'dark':'light';
-  document.documentElement.dataset.theme=t;
-  localStorage.setItem('kyro_theme',t);
-  const icon=document.getElementById('themeIcon');
-  if(icon) icon.textContent=t==='dark'?'☀':'☾';
-  const meta=document.getElementById('themeColor');
-  if(meta) meta.setAttribute('content',t==='dark'?'#0b0b0b':'#ffffff');
-}
+const seed={prospects:[
+{id:'p1',name:'Amani Media',company:'Amani Media',email:'hello@amani.example',channel:'Email',status:'Approved',campaign:'Launch Q4',note:'Strong fit for a creator-led campaign.'},
+{id:'p2',name:'Nova Brand',company:'Nova Brand',email:'team@nova.example',channel:'Email',status:'Draft',campaign:'Creator push',note:'Review opening before approval.'},
+{id:'p3',name:'Kipepeo Co.',company:'Kipepeo Co.',email:'hello@kipepeo.example',channel:'Instagram',status:'Replied',campaign:'Partnership',note:'Asked for rate card.'},
+{id:'p4',name:'Studio Tamu',company:'Studio Tamu',email:'hello@studio.example',channel:'Email',status:'Approved',campaign:'Intro campaign',note:'Follow up Friday.'}],
+campaigns:[
+{id:'c1',name:'Launch Q4',status:'Active',channel:'Email',goal:'Introduce Kcreatives production services.'},
+{id:'c2',name:'Creator push',status:'Draft',channel:'Email',goal:'Start conversations with creator-first brands.'},
+{id:'c3',name:'Partnership',status:'Paused',channel:'Instagram',goal:'Build strategic collaboration pipeline.'}],
+activity:[
+{id:'a1',kind:'Approval',message:'Amani Media moved to Approved',created_at:new Date().toISOString()},
+{id:'a2',kind:'Reply',message:'Kipepeo Co. replied to the partnership outreach',created_at:new Date(Date.now()-3600000).toISOString()},
+{id:'a3',kind:'Campaign',message:'Launch Q4 campaign is active',created_at:new Date(Date.now()-7200000).toISOString()}]};
+let state=load(),modalType=null,editId=null;
+function load(){try{let x=JSON.parse(localStorage.getItem(KEY));return x&&x.prospects?x:structuredClone(seed)}catch(e){return structuredClone(seed)}}
+function persist(){localStorage.setItem(KEY,JSON.stringify(state))}
+function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function initials(s){return s.split(/\s+/).map(x=>x[0]).slice(0,2).join('').toUpperCase()}
+function timeAgo(v){let d=Date.now()-new Date(v).getTime();if(d<60000)return'just now';if(d<3600000)return Math.floor(d/60000)+'m ago';if(d<86400000)return Math.floor(d/3600000)+'h ago';return Math.floor(d/86400000)+'d ago'}
+function pill(s){let c=s==='Approved'||s==='Interested'?'green':s==='Draft'?'':s==='Replied'?'orange':s==='Not Interested'||s==='Do Not Contact'?'red':'';return '<span class="pill '+c+'">'+esc(s)+'</span>'}
+function applyTheme(t){t=t==='dark'?'dark':'light';document.documentElement.dataset.theme=t;localStorage.setItem('kyro_theme',t);document.getElementById('themeToggle').textContent=t==='dark'?'☀':'☾';document.getElementById('themeColor').content=t==='dark'?'#090a09':'#fff'}
 function toggleTheme(){applyTheme(document.documentElement.dataset.theme==='dark'?'light':'dark')}
 applyTheme(localStorage.getItem('kyro_theme')||'light');
-
-let state=load();
-let modalType=null, editId=null;
-
-function load(){try{const x=JSON.parse(localStorage.getItem(KEY));return x&&x.prospects?x:structuredClone(seed)}catch(e){return structuredClone(seed)}}
-function persist(){localStorage.setItem(KEY,JSON.stringify(state))}
-function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(window.__toast);window.__toast=setTimeout(()=>t.classList.remove('show'),2400)}
-function initials(s){return s.split(/\s+/).map(x=>x[0]).slice(0,2).join('').toUpperCase()}
-function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
-function pill(s){let c=s==='Approved'||s==='Interested'?'green':s==='Draft'?'blue':s==='Not Interested'||s==='Do Not Contact'?'red':s==='Replied'?'orange':'';return '<span class="pill '+c+'">'+esc(s)+'</span>'}
-function timeAgo(v){const d=Date.now()-new Date(v).getTime();if(d<60000)return 'just now';if(d<3600000)return Math.floor(d/60000)+'m ago';if(d<86400000)return Math.floor(d/3600000)+'h ago';return Math.floor(d/86400000)+'d ago'}
-
-function showView(name){
-  document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
-  document.getElementById('view-'+name).classList.add('active');
-  document.querySelectorAll('.nav').forEach(x=>x.classList.toggle('active',x.dataset.view===name));
-  document.getElementById('crumb').textContent=name[0].toUpperCase()+name.slice(1);
-  document.getElementById('sidebar').classList.remove('open');
-  if(name==='prospects')renderProspects(); if(name==='campaigns')renderCampaigns(); if(name==='approvals')renderApprovals(); if(name==='activity')renderActivity();
-}
-document.querySelectorAll('.nav').forEach(x=>x.addEventListener('click',()=>showView(x.dataset.view)));
-function toggleSidebar(){document.getElementById('sidebar').classList.toggle('open')}
-
-function render(){
-  const p=state.prospects,c=state.campaigns;
-  document.getElementById('mProspects').textContent=p.length;
-  document.getElementById('mApproved').textContent=p.filter(x=>x.status==='Approved').length;
-  document.getElementById('mReplies').textContent=p.filter(x=>['Replied','Interested'].includes(x.status)).length;
-  document.getElementById('mCampaigns').textContent=c.filter(x=>x.status==='Active').length;
-  document.getElementById('approvalCount').textContent=p.filter(x=>x.status==='Draft').length||'';
-  document.getElementById('pipelineCount').textContent=p.length+' prospects';
-  document.getElementById('pipeline').innerHTML=p.length?'<table class="table"><thead><tr><th>Prospect</th><th>Campaign</th><th>Status</th><th>Next</th></tr></thead><tbody>'+p.slice(0,6).map(x=>'<tr><td><div class="person"><span class="mini">'+initials(x.name)+'</span><div>'+esc(x.name)+'<span class="sub">'+esc(x.company)+'</span></div></div></td><td>'+esc(x.campaign||'Unassigned')+'</td><td>'+pill(x.status)+'</td><td class="muted">'+(x.status==='Draft'?'Review':x.status==='Approved'?'Ready':'—')+'</td></tr>').join('')+'</tbody></table>':'<div class="empty"><strong>Your pipeline is empty.</strong>Add your first prospect.</div>';
-  renderRecent();renderProspects();renderCampaigns();renderApprovals();renderActivity();checkHealth();
-}
-function renderRecent(){
-  const a=state.activity.slice(0,6);
-  document.getElementById('recentActivity').innerHTML=a.length?a.map(x=>'<div class="event"><span class="eventdot"></span><div><strong>'+esc(x.kind)+'</strong><p>'+esc(x.message)+'</p><time>'+timeAgo(x.created_at)+'</time></div></div>').join(''):'<div class="empty">No activity yet.</div>';
-}
-function renderProspects(){
-  const q=(document.getElementById('prospectSearch')?.value||'').toLowerCase(), f=document.getElementById('prospectFilter')?.value||'All';
-  const items=state.prospects.filter(x=>(f==='All'||x.status===f)&&[x.name,x.company,x.email,x.note].join(' ').toLowerCase().includes(q));
-  document.getElementById('prospectRows').innerHTML=items.length?items.map(x=>'<tr><td><div class="person"><span class="mini">'+initials(x.name)+'</span><div><strong>'+esc(x.name)+'</strong><span class="sub">'+esc(x.company)+' · '+esc(x.email)+'</span></div></div></td><td>'+esc(x.channel)+'</td><td>'+esc(x.campaign||'Unassigned')+'</td><td>'+pill(x.status)+'</td><td class="muted">'+esc(x.note||'—')+'</td><td><button class="btn" onclick="editProspect(\''+x.id+'\')">Edit</button> <button class="btn danger" onclick="removeProspect(\''+x.id+'\')">×</button></td></tr>').join(''):'<tr><td colspan="6"><div class="empty"><strong>No matching prospects.</strong>Try a different search or add one.</div></td></tr>';
-}
-function renderCampaigns(){
-  document.getElementById('campaignCards').innerHTML=state.campaigns.length?state.campaigns.map(c=>{
-    const count=state.prospects.filter(p=>p.campaign===c.name).length;
-    return '<article class="campaign"><div class="campaigntop"><h3>'+esc(c.name)+'</h3>'+pill(c.status)+'</div><p>'+esc(c.goal||'No campaign goal defined yet.')+'</p><div class="progress"><i style="width:'+Math.min(100,count*18+12)+'%"></i></div><div class="campaignmeta"><span>'+count+' prospects</span><span>'+esc(c.channel)+'</span></div><div class="campaignactions"><button class="btn" onclick="cycleCampaign(\''+c.id+'\')">'+(c.status==='Active'?'Pause':'Activate')+'</button><button class="btn danger" onclick="removeCampaign(\''+c.id+'\')">Delete</button></div></article>'
-  }).join(''):'<div class="empty" style="grid-column:1/-1"><strong>No campaigns yet.</strong>Create one to organize your outreach.</div>';
-}
-function renderApprovals(){
-  const items=state.prospects.filter(x=>x.status==='Draft');
-  document.getElementById('approvals').innerHTML=items.length?items.map(x=>'<article class="approval"><div class="approvalhead"><div><h3>'+esc(x.name)+'</h3><span class="sub">'+esc(x.company)+' · '+esc(x.campaign||'Unassigned')+'</span></div>'+pill('Draft')+'</div><div class="mail">Hi '+esc(x.name.split(' ')[0])+',<br><br>'+esc(x.note||'We would love to explore a possible collaboration with '+x.company+'.')+'<br><br>Best,<br>Kcreatives</div><div class="approvalfooter"><small>Human review required</small><button class="btn primary" onclick="approve(\''+x.id+'\')">Approve</button></div></article>').join(''):'<div class="empty" style="grid-column:1/-1"><strong>Nothing waiting.</strong>Your approval queue is clear.</div>';
-}
-function renderActivity(){
-  document.getElementById('activityAll').innerHTML=state.activity.length?state.activity.map(x=>'<div class="event"><span class="eventdot"></span><div><strong>'+esc(x.kind)+'</strong><p>'+esc(x.message)+'</p><time>'+new Date(x.created_at).toLocaleString()+'</time></div></div>').join(''):'<div class="empty">No activity yet.</div>';
-}
-
-function openModal(type,id=null){
-  modalType=type;editId=id;document.getElementById('modal').classList.add('show');
-  if(type==='prospect'){
-    const x=id?state.prospects.find(v=>v.id===id):{};
-    document.getElementById('modalTitle').textContent=id?'Edit prospect':'Add prospect';
-    document.getElementById('modalSubmit').textContent=id?'Save changes':'Add prospect';
-    document.getElementById('modalBody').innerHTML='<div class="rowfield"><label>Name</label><input required class="field" name="name" value="'+esc(x.name||'')+'"></div><div class="rowfield"><label>Company</label><input required class="field" name="company" value="'+esc(x.company||'')+'"></div><div class="rowfield"><label>Email</label><input type="email" class="field" name="email" value="'+esc(x.email||'')+'"></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div class="rowfield"><label>Channel</label><select class="field" name="channel"><option '+(x.channel==='Email'?'selected':'')+'>Email</option><option '+(x.channel==='Instagram'?'selected':'')+'>Instagram</option><option '+(x.channel==='LinkedIn'?'selected':'')+'>LinkedIn</option><option '+(x.channel==='Phone'?'selected':'')+'>Phone</option></select></div><div class="rowfield"><label>Status</label><select class="field" name="status">'+['New','Draft','Approved','Replied','Interested','Not Interested','Do Not Contact'].map(s=>'<option '+(x.status===s?'selected':'')+'>'+s+'</option>').join('')+'</select></div></div><div class="rowfield"><label>Campaign</label><select class="field" name="campaign"><option>Unassigned</option>'+state.campaigns.map(c=>'<option '+(x.campaign===c.name?'selected':'')+'>'+esc(c.name)+'</option>').join('')+'</select></div><div class="rowfield"><label>Verified note</label><textarea class="field" name="note" rows="4" placeholder="Only record information you actually know.">'+esc(x.note||'')+'</textarea></div>';
-  }else{
-    const x=id?state.campaigns.find(v=>v.id===id):{};
-    document.getElementById('modalTitle').textContent=id?'Edit campaign':'New campaign';
-    document.getElementById('modalSubmit').textContent=id?'Save changes':'Create campaign';
-    document.getElementById('modalBody').innerHTML='<div class="rowfield"><label>Campaign name</label><input required class="field" name="name" value="'+esc(x.name||'')+'"></div><div class="rowfield"><label>Goal</label><textarea class="field" name="goal" rows="3" placeholder="What should this campaign achieve?">'+esc(x.goal||'')+'</textarea></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div class="rowfield"><label>Channel</label><select class="field" name="channel"><option>Email</option><option '+(x.channel==='Instagram'?'selected':'')+'>Instagram</option><option '+(x.channel==='LinkedIn'?'selected':'')+'>LinkedIn</option></select></div><div class="rowfield"><label>Status</label><select class="field" name="status"><option>Draft</option><option '+(x.status==='Active'?'selected':'')+'>Active</option><option '+(x.status==='Paused'?'selected':'')+'>Paused</option><option '+(x.status==='Completed'?'selected':'')+'>Completed</option></select></div></div>';
-  }
-}
+function toast(m){let t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(window.__t);window.__t=setTimeout(()=>t.classList.remove('show'),2300)}
+function showView(n){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById('view-'+n).classList.add('active');document.querySelectorAll('.nav').forEach(v=>v.classList.toggle('active',v.dataset.view===n));document.getElementById('crumb').textContent=n[0].toUpperCase()+n.slice(1);document.getElementById('sidebar').classList.remove('open');if(n==='prospects')renderProspects();if(n==='campaigns')renderCampaigns();if(n==='approvals')renderApprovals();if(n==='activity')renderActivity()}
+document.querySelectorAll('.nav').forEach(n=>n.onclick=()=>showView(n.dataset.view));function toggleSidebar(){document.getElementById('sidebar').classList.toggle('open')}
+function render(){let p=state.prospects,c=state.campaigns,r=p.filter(x=>['Replied','Interested'].includes(x.status)).length,a=p.filter(x=>x.status==='Approved').length,d=p.filter(x=>x.status==='Draft').length,ac=c.filter(x=>x.status==='Active').length;
+['mProspects','mApproved','mReplies','mCampaigns'].forEach((id,i)=>document.getElementById(id).textContent=[p.length,a,r,ac][i]);
+document.getElementById('heroReplies').textContent=r;document.getElementById('heroReady').textContent=a+' ready to move';document.getElementById('pulseApproved').textContent=a;document.getElementById('pulseReplies').textContent=r;document.getElementById('sigReady').textContent=a;document.getElementById('sigReview').textContent=d;document.getElementById('sigReply').textContent=r;document.getElementById('sigCampaigns').textContent=ac;document.getElementById('approvalCount').textContent=d||'';document.getElementById('pipelineCount').textContent=p.length+' prospects';
+document.getElementById('pipeline').innerHTML=p.length?'<table class="table"><thead><tr><th>Prospect</th><th>Campaign</th><th>Status</th><th>Next</th></tr></thead><tbody>'+p.slice(0,6).map(x=>'<tr><td><div class="person"><span class="mini">'+initials(x.name)+'</span><div>'+esc(x.name)+'<span class="sub">'+esc(x.company)+'</span></div></div></td><td>'+esc(x.campaign||'Unassigned')+'</td><td>'+pill(x.status)+'</td><td style="color:var(--muted)">'+(x.status==='Draft'?'Review':x.status==='Approved'?'Ready':'—')+'</td></tr>').join('')+'</tbody></table>':'<div class="empty"><strong>Your pipeline is empty.</strong>Add your first prospect.</div>';
+renderRecent();renderProspects();renderCampaigns();renderApprovals();renderActivity();checkHealth()}
+function renderRecent(){let a=state.activity.slice(0,6);document.getElementById('recentActivity').innerHTML=a.length?a.map(x=>'<div class="event"><span class="eventdot"></span><div><strong>'+esc(x.kind)+'</strong><p>'+esc(x.message)+'</p><time>'+timeAgo(x.created_at)+'</time></div></div>').join(''):'<div class="empty">No activity yet.</div>'}
+function renderProspects(){let q=(document.getElementById('prospectSearch')?.value||'').toLowerCase(),f=document.getElementById('prospectFilter')?.value||'All';let a=state.prospects.filter(x=>(f==='All'||x.status===f)&&[x.name,x.company,x.email,x.note].join(' ').toLowerCase().includes(q));document.getElementById('prospectRows').innerHTML=a.length?a.map(x=>'<tr><td><div class="person"><span class="mini">'+initials(x.name)+'</span><div><b>'+esc(x.name)+'</b><span class="sub">'+esc(x.company)+' · '+esc(x.email)+'</span></div></div></td><td>'+esc(x.channel)+'</td><td>'+esc(x.campaign||'Unassigned')+'</td><td>'+pill(x.status)+'</td><td style="color:var(--muted)">'+esc(x.note||'—')+'</td><td><button class="btn" onclick="openModal(\'prospect\',\''+x.id+'\')">Edit</button> <button class="btn" onclick="removeProspect(\''+x.id+'\')">×</button></td></tr>').join(''):'<tr><td colspan="6"><div class="empty"><strong>No matching prospects.</strong>Try another search.</div></td></tr>'}
+function renderCampaigns(){document.getElementById('campaignCards').innerHTML=state.campaigns.length?state.campaigns.map(c=>{let n=state.prospects.filter(p=>p.campaign===c.name).length;return '<article class="campaign"><div class="campaigntop"><h3>'+esc(c.name)+'</h3>'+pill(c.status)+'</div><p>'+esc(c.goal||'No goal defined yet.')+'</p><div class="progress"><i style="width:'+Math.min(100,12+n*18)+'%"></i></div><div class="campaignmeta"><span>'+n+' prospects</span><span>'+esc(c.channel)+'</span></div><div class="campaignactions"><button class="btn" onclick="cycleCampaign(\''+c.id+'\')">'+(c.status==='Active'?'Pause':'Activate')+'</button><button class="btn" onclick="openModal(\'campaign\',\''+c.id+'\')">Edit</button><button class="btn" onclick="removeCampaign(\''+c.id+'\')">Delete</button></div></article>'}).join(''):'<div class="empty">No campaigns yet.</div>'}
+function renderApprovals(){let a=state.prospects.filter(x=>x.status==='Draft');document.getElementById('approvals').innerHTML=a.length?a.map(x=>'<article class="approval"><div class="approvalhead"><div><h3>'+esc(x.name)+'</h3><span class="sub">'+esc(x.company)+' · '+esc(x.campaign||'Unassigned')+'</span></div>'+pill('Draft')+'</div><div class="mail">Hi '+esc(x.name.split(' ')[0])+',<br><br>'+esc(x.note||'We would love to explore a possible collaboration with '+x.company+'.')+'<br><br>Best,<br>Kcreatives</div><div class="approvalfooter"><span style="color:var(--muted);font-size:9px">Human review required</span><button class="btn lime" onclick="approve(\''+x.id+'\')">Approve</button></div></article>').join(''):'<div class="empty"><strong>Queue clear.</strong>Nothing is waiting for review.</div>'}
+function renderActivity(){document.getElementById('activityAll').innerHTML=state.activity.length?state.activity.map(x=>'<div class="event"><span class="eventdot"></span><div><strong>'+esc(x.kind)+'</strong><p>'+esc(x.message)+'</p><time>'+new Date(x.created_at).toLocaleString()+'</time></div></div>').join(''):'<div class="empty">No activity yet.</div>'}
+function openModal(type,id=null){modalType=type;editId=id;document.getElementById('modal').classList.add('show');let x=id?(type==='prospect'?state.prospects.find(v=>v.id===id):state.campaigns.find(v=>v.id===id)):{};document.getElementById('modalTitle').textContent=id?'Edit '+type:'New '+type;document.getElementById('modalSubmit').textContent=id?'Save changes':'Create '+type;if(type==='prospect')document.getElementById('modalBody').innerHTML='<div class="rowfield"><label>Name</label><input required class="field" name="name" value="'+esc(x.name||'')+'"></div><div class="rowfield"><label>Company</label><input required class="field" name="company" value="'+esc(x.company||'')+'"></div><div class="rowfield"><label>Email</label><input type="email" class="field" name="email" value="'+esc(x.email||'')+'"></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div class="rowfield"><label>Channel</label><select class="field" name="channel"><option>Email</option><option '+(x.channel==='Instagram'?'selected':'')+'>Instagram</option><option '+(x.channel==='LinkedIn'?'selected':'')+'>LinkedIn</option><option '+(x.channel==='Phone'?'selected':'')+'>Phone</option></select></div><div class="rowfield"><label>Status</label><select class="field" name="status">'+['New','Draft','Approved','Replied','Interested','Not Interested','Do Not Contact'].map(s=>'<option '+(x.status===s?'selected':'')+'>'+s+'</option>').join('')+'</select></div></div><div class="rowfield"><label>Campaign</label><select class="field" name="campaign"><option>Unassigned</option>'+state.campaigns.map(c=>'<option '+(x.campaign===c.name?'selected':'')+'>'+esc(c.name)+'</option>').join('')+'</select></div><div class="rowfield"><label>Note</label><textarea class="field" name="note" rows="4">'+esc(x.note||'')+'</textarea></div>';else document.getElementById('modalBody').innerHTML='<div class="rowfield"><label>Campaign name</label><input required class="field" name="name" value="'+esc(x.name||'')+'"></div><div class="rowfield"><label>Goal</label><textarea class="field" name="goal" rows="3">'+esc(x.goal||'')+'</textarea></div><div class="rowfield"><label>Channel</label><select class="field" name="channel"><option>Email</option><option '+(x.channel==='Instagram'?'selected':'')+'>Instagram</option><option '+(x.channel==='LinkedIn'?'selected':'')+'>LinkedIn</option></select></div><div class="rowfield"><label>Status</label><select class="field" name="status"><option>Draft</option><option '+(x.status==='Active'?'selected':'')+'>Active</option><option '+(x.status==='Paused'?'selected':'')+'>Paused</option><option '+(x.status==='Completed'?'selected':'')+'>Completed</option></select></div>'}
 function closeModal(){document.getElementById('modal').classList.remove('show');modalType=null;editId=null}
-function submitModal(e){
-  e.preventDefault();const data=Object.fromEntries(new FormData(e.target).entries());
-  if(modalType==='prospect'){
-    if(editId){const x=state.prospects.find(v=>v.id===editId);Object.assign(x,data);addActivity('Prospect updated',x.name+' · '+x.company)}
-    else{const x={...data,id:'p'+Date.now()};state.prospects.unshift(x);addActivity('Prospect added',x.name+' · '+x.company)}
-  }else{
-    if(editId){const x=state.campaigns.find(v=>v.id===editId);Object.assign(x,data);addActivity('Campaign updated',x.name)}
-    else{const x={...data,id:'c'+Date.now()};state.campaigns.unshift(x);addActivity('Campaign created',x.name)}
-  }
-  const savedType=modalType; persist();closeModal();render();toast(savedType==='prospect'?'Prospect saved':'Campaign saved');
-}
-function addActivity(kind,message){state.activity.unshift({id:'a'+Date.now()+Math.random(),kind,message,created_at:new Date().toISOString()});state.activity=state.activity.slice(0,80)}
-function editProspect(id){openModal('prospect',id)}
-function removeProspect(id){const x=state.prospects.find(v=>v.id===id);if(!x)return;if(!confirm('Remove '+x.name+'?'))return;state.prospects=state.prospects.filter(v=>v.id!==id);addActivity('Prospect removed',x.name);persist();render();toast('Prospect removed')}
-function approve(id){const x=state.prospects.find(v=>v.id===id);if(!x)return;x.status='Approved';addActivity('Approval',x.name+' moved to Approved');persist();render();toast('Approved — '+x.name)}
-function cycleCampaign(id){const x=state.campaigns.find(v=>v.id===id);if(!x)return;x.status=x.status==='Active'?'Paused':'Active';addActivity('Campaign '+x.status.toLowerCase(),x.name);persist();render();toast(x.name+' is '+x.status.toLowerCase())}
-function removeCampaign(id){const x=state.campaigns.find(v=>v.id===id);if(!x)return;if(!confirm('Delete '+x.name+'?'))return;state.campaigns=state.campaigns.filter(v=>v.id!==id);state.prospects.forEach(p=>{if(p.campaign===x.name)p.campaign='Unassigned'});addActivity('Campaign removed',x.name);persist();render();toast('Campaign deleted')}
-function toggleSetting(el){el.classList.toggle('on')}
-function saveSettings(){const n=document.getElementById('workspaceName').value;localStorage.setItem('kyro_workspace_name',n);const w=document.querySelector('.workspace strong');if(w)w.textContent=n;toast('Workspace settings saved')}
-function resetDemo(){if(!confirm('Reset this browser to the original Kyro demo data?'))return;state=structuredClone(seed);persist();render();toast('Demo workspace reset')}
-async function checkHealth(){try{const r=await fetch('/api/health',{cache:'no-store'});if(r.ok){document.getElementById('connection').textContent='● API connected';document.getElementById('apiHealth').textContent='Healthy';return}}catch(e){}document.getElementById('connection').textContent='● Local workspace';document.getElementById('apiHealth').textContent='Local fallback'}
+function submitModal(e){e.preventDefault();let d=Object.fromEntries(new FormData(e.target).entries());if(modalType==='prospect'){if(editId){let x=state.prospects.find(v=>v.id===editId);Object.assign(x,d);addActivity('Prospect updated',x.name)}else{let x={...d,id:'p'+Date.now()};state.prospects.unshift(x);addActivity('Prospect added',x.name)}}else{if(editId){let x=state.campaigns.find(v=>v.id===editId);Object.assign(x,d);addActivity('Campaign updated',x.name)}else{let x={...d,id:'c'+Date.now()};state.campaigns.unshift(x);addActivity('Campaign created',x.name)}}let t=modalType;persist();closeModal();render();toast(t==='prospect'?'Prospect saved':'Campaign saved')}
+function addActivity(k,m){state.activity.unshift({id:'a'+Date.now()+Math.random(),kind:k,message:m,created_at:new Date().toISOString()});state.activity=state.activity.slice(0,80)}
+function removeProspect(id){let x=state.prospects.find(v=>v.id===id);if(x&&confirm('Remove '+x.name+'?')){state.prospects=state.prospects.filter(v=>v.id!==id);addActivity('Prospect removed',x.name);persist();render();toast('Prospect removed')}}
+function approve(id){let x=state.prospects.find(v=>v.id===id);if(x){x.status='Approved';addActivity('Approval',x.name+' moved to Approved');persist();render();toast('Approved — '+x.name)}}
+function cycleCampaign(id){let x=state.campaigns.find(v=>v.id===id);if(x){x.status=x.status==='Active'?'Paused':'Active';addActivity('Campaign '+x.status.toLowerCase(),x.name);persist();render();toast(x.name+' is '+x.status.toLowerCase())}}
+function removeCampaign(id){let x=state.campaigns.find(v=>v.id===id);if(x&&confirm('Delete '+x.name+'?')){state.campaigns=state.campaigns.filter(v=>v.id!==id);state.prospects.forEach(p=>{if(p.campaign===x.name)p.campaign='Unassigned'});addActivity('Campaign removed',x.name);persist();render();toast('Campaign deleted')}}
+function toggleSetting(e){e.classList.toggle('on')}
+function saveSettings(){let n=document.getElementById('workspaceName').value;document.getElementById('workspaceLabel').textContent=n;localStorage.setItem('kyro_workspace_name',n);toast('Workspace settings saved')}
+function resetDemo(){if(confirm('Reset this browser to the original demo data?')){state=structuredClone(seed);persist();render();toast('Demo reset')}}
 function refreshAll(){render();toast('Workspace refreshed')}
-document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
+async function checkHealth(){try{let r=await fetch('/api/health',{cache:'no-store'});if(r.ok){connection.textContent='● API connected';apiHealth.textContent='Healthy';return}}catch(e){}connection.textContent='● Local workspace';apiHealth.textContent='Local fallback'}
+const cmds=[['Overview','showView("overview")'],['Open prospects','showView("prospects")'],['Open campaigns','showView("campaigns")'],['Open approvals','showView("approvals")'],['Open activity','showView("activity")'],['Open settings','showView("settings")'],['Add prospect','openModal("prospect")'],['New campaign','openModal("campaign")'],['Toggle dark mode','toggleTheme()']];
+function openCommand(){command.classList.add('show');commandInput.value='';renderCommands();setTimeout(()=>commandInput.focus(),30)}
+function closeCommand(){command.classList.remove('show')}
+function renderCommands(){commands.innerHTML=cmds.map((c,i)=>'<button class="cmd" onclick="'+c[1]+';closeCommand()"><span>'+c[0]+'</span><small>'+['1','2','3','4','5','6','P','C','D'][i]+'</small></button>').join('')}
+function filterCommands(){let q=commandInput.value.toLowerCase();commands.innerHTML=cmds.filter(c=>c[0].toLowerCase().includes(q)).map(c=>'<button class="cmd" onclick="'+c[1]+';closeCommand()"><span>'+c[0]+'</span></button>').join('')||'<div class="empty">No command found.</div>'}
+document.getElementById('command').onclick=e=>{if(e.target.id==='command')closeCommand()};document.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();openCommand()}if(e.key==='Escape'){closeCommand();closeModal()}});
+let savedName=localStorage.getItem('kyro_workspace_name');if(savedName)workspaceLabel.textContent=savedName;
 render();
 </script>
-</body>
-</html>
+</body></html>
