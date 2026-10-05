@@ -7,7 +7,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 BASE_DIR = Path(__file__).resolve().parent
-DB_PATH = Path(os.getenv("KYRO_DB_PATH", str(BASE_DIR / "data" / "kyro.sqlite3")))
+DB_PATH = Path(os.getenv("KYRO_DB_PATH", "/tmp/kyro.sqlite3" if os.getenv("VERCEL") else str(BASE_DIR / "data" / "kyro.sqlite3")))
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS prospects (
